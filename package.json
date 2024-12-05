@@ -1,0 +1,26 @@
+{
+  "name": "rzulty-bot",
+  "version": "1.0.0",
+  "description": "A simple discord bot",
+  "main": "rzulty-bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node rzulty-bot.js",
+    "update-commands": "node rzulty-bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naria-labs/rzulty-bot.git"
+  },
+  "author": "Naria Labs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/naria-labs/rzulty-bot/issues"
+  },
+  "homepage": "https://github.com/naria-labs/rzulty-bot#readme",
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.7",
+    "pm2": "^5.4.3"
+  }
+}
