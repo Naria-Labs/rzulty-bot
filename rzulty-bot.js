@@ -1,6 +1,7 @@
 // basic code using a lot from https://discordjs.guide
 
 const { Client, Collection, Events, GatewayIntentBits, REST, Routes } = require('discord.js');
+const sqlite3 = require('sqlite3').verbose();
 const fs = require('node:fs');
 const path = require('node:path');
 require('dotenv').config();
