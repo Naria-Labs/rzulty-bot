@@ -1,0 +1,40 @@
+name: Auto Deploy in VPS after push to master
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    name: Deploy project
+    permissions:
+      deployments: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy my App on Server
+        uses: appleboy/ssh-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd naria-labs/rzulty-bot/
+            git pull origin master
+            npm ci
+            pm2 restart production --update-env
+      - name: Update commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd naria-labs/rzulty-bot/
+            npm update-commands
+            
