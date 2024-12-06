@@ -23,6 +23,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd naria-labs/rzulty-bot/
+            git checkout master
             git pull origin master
             npm ci
             npm test
