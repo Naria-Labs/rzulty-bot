@@ -36,5 +36,5 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd naria-labs/rzulty-bot/
-            npm update-commands
+            npm run update-commands
             
