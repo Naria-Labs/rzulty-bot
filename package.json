@@ -4,9 +4,9 @@
   "description": "A simple discord bot",
   "main": "rzulty-bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"No tests specified\"",
     "start": "node rzulty-bot.js",
-    "update-commands": "node rzulty-bot.js"
+    "update-commands": "node deploy-commands.js"
   },
   "repository": {
     "type": "git",
