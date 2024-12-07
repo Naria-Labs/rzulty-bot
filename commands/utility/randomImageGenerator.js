@@ -22,13 +22,13 @@ module.exports = {
 	async execute(interaction) {
         const tags = interaction.options.getString('tags');
 		const image1 = `https://pic.re/image/${tags}`;
-		const image2 = `?random=${Date.now()}`; //in Typescript it was needed to be `` instead of ''
-		const image = image1 + image2;
+		//const image2 = `?random=${Date.now()}`; //in Typescript it was needed to be `` instead of ''
+		//const image = image1 + image2;
 
 		const Embed = new EmbedBuilder()
 			.setColor(0x0099FF)
 			.setTitle('Random Image')
-			.setImage(image)
+			.setImage(image1)
 			.setTimestamp()
 			.setFooter({ text: `Powered by/pic.re || ${tags}`});
 
