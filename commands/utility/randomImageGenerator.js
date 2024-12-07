@@ -9,7 +9,7 @@ module.exports = {
 	async execute(interaction) {
 		const image = `https://placewaifu.com/image/200?random=${Date.now()}`; //in Typescript it was needed to be `` instead of ''
 
-		const Embed = new
+        const Embed = new EmbedBuilder()
 			.setColor(0x0099FF)
 			.setTitle('Random Image')
 			.setImage(image)
