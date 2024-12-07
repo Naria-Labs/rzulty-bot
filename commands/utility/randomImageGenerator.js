@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('rImage')
+		.setName('rimage') //everything with small letter
 		.setDescription('Responds with a random image'),
 
 	async execute(interaction) {
