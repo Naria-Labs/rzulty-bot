@@ -27,7 +27,7 @@ module.exports = {
 
 		const tags = interaction.options.getString('tags');
 		const response = await fetch(`https://api.waifu.pics/sfw/${tags}`);
-		const parseData = JSON.parse(response);
+		const parseData = await response.json();
 		const image = parseData.url;
 
 		const Embed = new EmbedBuilder()
