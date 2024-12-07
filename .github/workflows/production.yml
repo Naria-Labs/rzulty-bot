@@ -27,6 +27,17 @@ jobs:
             git pull origin master
             npm ci
             npm test
+      - name: Update commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd naria-labs/rzulty-bot/
+            npm run update-commands
       - name: Deploy app
         uses: appleboy/ssh-action@master
         env:
@@ -40,15 +51,4 @@ jobs:
           script: |
             cd naria-labs/rzulty-bot/
             pm2 restart production --update-env
-      - name: Update commands
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.VPS_IP }}
-          username: ${{ secrets.VPS_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          port: ${{ secrets.PORT }}
-          script: |
-            cd naria-labs/rzulty-bot/
-            npm run update-commands
             
