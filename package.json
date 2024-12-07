@@ -4,7 +4,7 @@
   "description": "A simple discord bot",
   "main": "rzulty-bot.js",
   "scripts": {
-    "test": "echo \"No tests specified\"",
+    "test": "TEST=1 node rzulty-bot.js",
     "start": "node rzulty-bot.js",
     "update-commands": "node deploy-commands.js"
   },

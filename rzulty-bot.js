@@ -57,4 +57,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	console.log(interaction);
 });
 
-client.login(process.env.DISCORD_TOKEN);
+if (!process.env.TEST || process.env.TEST === "0")
+{
+	client.login(process.env.DISCORD_TOKEN);
+}
