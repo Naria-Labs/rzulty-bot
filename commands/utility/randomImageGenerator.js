@@ -13,7 +13,7 @@ module.exports = {
                 .setDescription('Search of the tags that are in the image generator')
 				.setRequired(true)
 				.addChoices(
-					{ name: 'Pulbic', value: 'public' },
+					{ name: 'Public', value: 'public' },
 					{ name: 'sfw', value: 'SFW' },
 					{ name: 'Functional', value: 'Functional' },
 					{ name: 'Source', value: 'Source' },
