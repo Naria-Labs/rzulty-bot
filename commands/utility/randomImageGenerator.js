@@ -26,9 +26,9 @@ module.exports = {
 	async execute(interaction) {
 
 		const tags = interaction.options.getString('tags');
-		const image1 = `https://api.waifu.pics/sfw/${tags}`;
-		const parseData = await fetch(image1);
-		const image = parseData.url
+		const response = await fetch(`https://api.waifu.pics/sfw/${tags}`);
+		const parseData = JSON.parse(response);
+		const image = parseData.url;
 
 		const Embed = new EmbedBuilder()
 			.setColor(0x0099FF)
