@@ -57,7 +57,7 @@ module.exports = {
 	async execute(interaction) {
 
 		const tags = interaction.options.getString('tags');
-		const response = await fetch(`https://api.waifu.pics/${horny}/${tags}`);
+		const response = await fetch(`https://api.waifu.pics/${group.setName}/${tags}`);
 		const parseData = await response.json();
 		const image = parseData.url;
 
