@@ -7,15 +7,15 @@ module.exports = {
 		.setDescription('Responds with a random image'),
 
 	async execute(interaction) {
-		const image = `https://placewaifu.com/image/200?random=${Date.now()}`; //in Typescript it was needed to be `` instead of ''
+		const image = new AttachmentBuilder(`https://placewaifu.com/image/200?random=${Date.now()}`); //in Typescript it was needed to be `` instead of ''
 
 		const Embed = new EmbedBuilder()
 			.setColor(0x0099FF)
 			.setTitle('Random Image')
-			.setImage(image)
+			.setImage(`attachment:https://placewaifu.com/image/200?random=${Date.now()}`)
 			.setTimestamp()
 			.setFooter({ text: 'Powered by placewaifu.com'});
 
-		await interaction.reply({ embeds: [Embed] });
+		await interaction.reply({ embeds: [Embed], files: [image] });
 	},
 };
