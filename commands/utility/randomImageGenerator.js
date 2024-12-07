@@ -15,7 +15,7 @@ module.exports = {
 			.setTitle('Random Image')
 			.setImage(image)
 			.setTimestamp()
-			.setFooter({ text: 'Powered by placewaifu.com'});
+			.setFooter({ text: 'Powered by/pic.re || sfw'});
 
 		await interaction.reply({ embeds: [Embed]});
 	},
