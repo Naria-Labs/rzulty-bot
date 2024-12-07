@@ -8,7 +8,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('rimage') //everything with small letter
 		.setDescription('Responds with a random image')
-		.addTagsOption(option =>
+		.addStringOption(option =>
 			option.setName('tags')
                 .setDescription('Search of the tags that are in the image generator')
 				.setRequired(true)
