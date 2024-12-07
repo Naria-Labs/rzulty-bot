@@ -6,7 +6,7 @@ module.exports = {
 		.setDescription('Responds with a random image'),
 
 	async execute(interaction) {
-        const image = 'https://placewaifu.com/image/200?random=${Date.now()}'; //in Typescript it was needed to be `` instead of ''
+        const image = `https://placewaifu.com/image/200?random=${Date.now()}`; //in Typescript it was needed to be `` instead of ''
 
 		await interaction.reply(image);
 	},
