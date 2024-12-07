@@ -16,6 +16,6 @@ module.exports = {
 			.setTimestamp()
 			.setFooter({ text: 'Powered by placewaifu.com'});
 
-		channel.send({ embeds: [Embed] });
+		await interaction.reply({ embeds: [Embed] });
 	},
 };
