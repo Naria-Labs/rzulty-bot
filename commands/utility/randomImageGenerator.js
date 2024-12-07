@@ -58,14 +58,7 @@ module.exports = {
 		const tags = interaction.options.getString('tags');
 		const response = await fetch(`https://api.waifu.pics/${horny}/${tags}`);
 		const parseData = await response.json();
-		const image1 = parseData.url;
-
-		if (`${horny}` === 'nsfw') {
-			const image = `||${image1}||`;
-		}
-		else {
-			const image = `${image1}`;
-		}
+		const image = parseData.url;
 
 		const Embed = new EmbedBuilder()
 			.setColor(0x0099FF)
