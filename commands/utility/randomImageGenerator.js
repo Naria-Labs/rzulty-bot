@@ -60,7 +60,7 @@ module.exports = {
 		const parseData = await response.json();
 		const image1 = parseData.url;
 
-		if (horny === 'nsfw') {
+		if (`${horny}` === 'nsfw') {
 			const image = `||${image1}||`;
 		}
 		else {
