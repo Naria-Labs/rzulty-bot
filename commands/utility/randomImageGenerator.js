@@ -53,17 +53,23 @@ module.exports = {
 						)
 			),
 		),
-
 	async execute(interaction) {
         const horny = interaction.options.getSubcommandGroup();
 		const tags = interaction.options.getString('tags');
 		const response = await fetch(`https://api.waifu.pics/${horny}/${tags}`);
 		const parseData = await response.json();
-		const image = parseData.url;
+		const image1 = parseData.url;
+
+		if (horny === 'nsfw') {
+			const image = `||${image1}||`;
+		}
+		else {
+			const image = `${image1}`;
+		}
 
 		const Embed = new EmbedBuilder()
 			.setColor(0x0099FF)
-			.setTitle('Random Image')
+			.setTitle(`Random Image ${horny}`)
 			.setImage(image)
 			.setTimestamp()
 			.setFooter({ text: `Powered api.waifu.pics || ${tags}`});
