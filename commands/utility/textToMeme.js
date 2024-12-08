@@ -49,7 +49,7 @@ module.exports = {
             }
         });
 
-		let arrayString = text.join('');
+		const arrayString = textArray.join('');
 		await interaction.reply(`${arrayString}`);
 	},
 };
