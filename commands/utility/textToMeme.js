@@ -72,7 +72,7 @@ module.exports = {
         }
 
         messages.forEach((message) => {
-            await interaction.reply(`\n${message}\n`);
+            interaction.reply(`\n${message}\n`);
         });
 
 	},
