@@ -23,7 +23,7 @@ module.exports = {
         const textArray = str1.split('').map(char => {
             switch (char) {
                 case ' ':
-                    return `${char}`;
+                    return ':space:';
                 case '1':
                     return ':one:';
                 case '2':
