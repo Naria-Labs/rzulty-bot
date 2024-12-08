@@ -42,23 +42,34 @@ module.exports = {
                     return `:regional_indicator_${char}:`;
             }
         });
-        const chunkSize = 1984;
+
+        const chunkSize = 2000;
+        const messages = [];
         let currentMessage = "";
         let currentLength = 0;
-        const messages = [];
 
         textArray.forEach(emoji => {
             const emojiLength = emoji.length;
 
             if (currentLength + emojiLength > chunkSize) {
-                if (emoji === '<:space:1315336436987203716>') {
+                if (currentMessage.endsWith('<:space:1315336436987203716>')) {
                     messages.push(currentMessage);
                     currentMessage = emoji;
                     currentLength = emojiLength;
                 } else {
-                    messages.push(currentMessage);
-                    currentMessage = emoji;
-                    currentLength = emojiLength;
+                    const lastSpaceIndex = currentMessage.lastIndexOf('<:space:1315336436987203716>');
+                    if (lastSpaceIndex !== -1) {
+                        const partToSend = currentMessage.slice(0, lastSpaceIndex + '<:space:1315336436987203716>'.length);
+                        const leftover = currentMessage.slice(lastSpaceIndex + '<:space:1315336436987203716>'.length);
+
+                        messages.push(partToSend);
+                        currentMessage = leftover + emoji;
+                        currentLength = leftover.length + emojiLength;
+                    } else {
+                        messages.push(currentMessage);
+                        currentMessage = emoji;
+                        currentLength = emojiLength;
+                    }
                 }
             } else {
                 currentMessage += emoji;
@@ -70,7 +81,7 @@ module.exports = {
             messages.push(currentMessage);
         }
 
-        //await interaction.reply(messages.shift());
+        await interaction.deferReply({ ephemeral: false });
         for (const message of messages) {
             await interaction.channel.send(message);
         }
