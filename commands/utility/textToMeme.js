@@ -15,11 +15,11 @@ module.exports = {
 		const text = str.split('');
 		for (let i = 0; i < text.length; i++) {
 			text[i] = text[i].toLowerCase();
-			if (text[i] === ' ' || ',' || '.')
-				i++;
+			if (text[i] === ' ' || ',' || '.') {
+				i++;}
         }
 		for (let i = 0; i < text.length; i++) {
-            text[i] = `:${text[i]}:`;
+			text[i] = `:regional_indicator_${text[i]}:`;
 		}
 		let arrayString = text.join('');
 		await interaction.reply(`${arrayString}`);
