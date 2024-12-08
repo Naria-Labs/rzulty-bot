@@ -70,7 +70,7 @@ module.exports = {
             messages.push(currentMessage);
         }
 
-        await interaction.reply(messages.shift());
+        //await interaction.reply(messages.shift());
         for (const message of messages) {
             await interaction.channel.send(message);
         }
