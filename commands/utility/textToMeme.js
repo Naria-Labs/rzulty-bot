@@ -42,7 +42,7 @@ module.exports = {
                     return `:regional_indicator_${char}:`;
             }
         });
-        const chunkSize = 2000;
+        const chunkSize = 1984;
         let currentMessage = "";
         let currentLength = 0;
         const messages = [];
