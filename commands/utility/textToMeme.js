@@ -15,11 +15,15 @@ module.exports = {
 		const text = str.split('');
 		for (let i = 0; i < text.length; i++) {
 			text[i] = text[i].toLowerCase();
-			if (text[i] === ' ' || ',' || '.') {
-				text[i] = '';}
-        }
+			if (text[i] == ' ' || text[i] == '.' || text[i] == ',') {
+				text.splice(i, 1);
+				i--;
+			}
+		}
 		for (let i = 0; i < text.length; i++) {
-			text[i] = `:regional_indicator_${text[i]}:`;
+			if (Math.floor(Math.random() * 2) == '0') {
+				text[i] = `:regional_indicator_${text[i]}:`;
+			} else text[i] = `:${text[i]}:`;
 		}
 		let arrayString = text.join('');
 		await interaction.reply(`${arrayString}`);
