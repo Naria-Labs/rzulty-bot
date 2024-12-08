@@ -4,55 +4,56 @@ const { AttachmentBuilder } = require('discord.js');
 const { InteractionContextType } = require('discord.js');
 const { PermissionFlagsBits } = require('discord.js');
 
+const groupDescriptions = {
+	'sfw': 'SFW Images',
+	'nsfw': 'NSFW Images',
+}
+
+const tagsOptionDescriptions = {
+	'sfw': 'Search of the tags that are in the image generator (all are SFW)',
+	'nsfw': 'Search of the tags that are in the image generator (all are NSFW)',
+}
+
+const tagsOptionChoices = {
+	'sfw': [
+		{ name: 'waifu', value: 'waifu' },
+		{ name: 'neko', value: 'neko' },
+		{ name: 'dance', value: 'dance' },
+		{ name: 'wink', value: 'wink' },
+	],
+	'nsfw': [
+		{ name: 'waifu', value: 'waifu' },
+		{ name: 'neko', value: 'neko' },
+		{ name: 'trap', value: 'trap' },
+		{ name: 'bj', value: 'blowjob' },
+	]
+}
+
+function makeSubgroup(name) {
+return (group) => 
+	group
+		.setName(name)
+		.setDescription(groupDescriptions[name])
+		.addSubcommand((subcommand) =>
+			subcommand
+				.setName('tags')
+				.setDescription('Search of the tags that are in the image generator')
+				.addStringOption(option =>
+					option.setName('tags')
+						.setDescription(tagsOptionDescriptions[name])
+						.addChoices(tagsOptionChoices[name])
+				.setRequired(true)
+			)
+		)
+}
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('rimage') //everything with small letter
 		.setDescription('Responds with a random waifu image')
-		.addSubcommandGroup((group) =>
-			group
-				.setName('sfw')
-				.setDescription('SFW Images')
-				.addSubcommand((subcommand) =>
-					subcommand
-						.setName('tags')
-						.setDescription('Search of the tags that are in the image generator')
-						.addStringOption(option =>
-							option.setName('tags')
-								.setDescription('Search of the tags that are in the image generator (all are sfw)')
-								.addChoices(
-									{ name: 'waifu', value: 'waifu' },
-									{ name: 'neko', value: 'neko' },
-									{ name: 'dance', value: 'dance' },
-									{ name: 'wink', value: 'wink' },
-								)
-								.setRequired(true)
-								
-						)
+		.addSubcommandGroup(makeSubgroup('nsfw'))
+		.addSubcommandGroup(makeSubgroup('sfw')),
 
-			),
-		)
-		.addSubcommandGroup((group) =>
-			group
-				.setName('nsfw')
-				.setDescription('NSFW Images')
-				.addSubcommand((subcommand) =>
-					subcommand
-						.setName('tags')
-						.setDescription('Search of the tags that are in the image generator')
-						.addStringOption(option =>
-							option.setName('tags')
-								.setDescription('Search of the tags that are in the image generator (all are sfw)')
-								.addChoices(
-									{ name: 'waifu', value: 'waifu' },
-									{ name: 'neko', value: 'neko' },
-									{ name: 'trap', value: 'trap' },
-									{ name: 'bj', value: 'blowjob' },
-								)
-								.setRequired(true)
-								
-						)
-			),
-		),
 	async execute(interaction) {
         const horny = interaction.options.getSubcommandGroup();
 		const tags = interaction.options.getString('tags');
