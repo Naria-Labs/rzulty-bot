@@ -12,22 +12,43 @@ module.exports = {
 	async execute(interaction) {
 		const emote = interaction.options.getString('emote');
 		const str = emote.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-		const text = str.split('');
+		const str1 = str.replace(/[^a-zA-Z0-9\s]/g, "").toLowerCase();
+		const text = str1.split('');
 		for (let i = 0; i < text.length; i++) {
-			text[i] = text[i].toLowerCase();
 			if ( text[i] == '.' || text[i] == ',') {
 				text.splice(i, 1);
 				i--;
 			}
 		}
-		for (let i = 0; i < text.length; i++) {
-			if (text[i] == ' ') {
-				text[i] = `${text[i]}`;
-			}
-			else {
-				text[i] = `:regional_indicator_${text[i]}:`;
-			}
-		}
+        const textArray = sanitizedStr.split('').map(char => {
+            switch (char) {
+                case ' ':
+                    return `${char}`;
+                case '1':
+                    return ':one:';
+                case '2':
+                    return ':two:';
+                case '3':
+                    return ':three:';
+                case '4':
+                    return ':four:';
+                case '5':
+                    return ':five:';
+                case '6':
+                    return ':six:';
+                case '7':
+                    return ':seven:';
+                case '8':
+                    return ':eight:';
+                case '9':
+                    return ':nine:';
+                case '0':
+                    return ':zero:';
+                default:
+                    return `:regional_indicator_${char}:`;
+            }
+        });
+
 		let arrayString = text.join('');
 		await interaction.reply(`${arrayString}`);
 	},
