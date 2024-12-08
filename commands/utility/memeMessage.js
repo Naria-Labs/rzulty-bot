@@ -1,7 +1,5 @@
 ﻿const { SlashCommandBuilder } = require('discord.js');
 
-const emote = interaction.options.getString();
-
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('memeMessage')
