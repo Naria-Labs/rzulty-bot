@@ -81,7 +81,7 @@ module.exports = {
             messages.push(currentMessage);
         }
 
-        await interaction.deferReply();
+        await interaction.deferReply({ ephemeral: true });
         for (const message of messages) {
             await interaction.channel.send(message);
         }
