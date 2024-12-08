@@ -43,8 +43,37 @@ module.exports = {
                     return `:regional_indicator_${char}:`;
             }
         });
+        const chunkSize = 2000; // Discord message limit I think ?
+        let currentMessage = "";
+        let currentLength = 0;
+        const messages = [];
 
-		const arrayString = textArray.join('');
-		await interaction.reply(`${arrayString}`);
+        textArray.forEach(emoji => {
+            const emojiLength = emoji.length;
+
+            if (currentLength + emojiLength > chunkSize) {
+                if (emoji === '<:space:1315336436987203716>') {
+                    messages.push(currentMessage); 
+                    currentMessage = emoji; 
+                    currentLength = emojiLength;
+                } else {
+                    messages.push(currentMessage); 
+                    currentMessage = emoji; 
+                    currentLength = emojiLength;
+                }
+            } else {
+                currentMessage += emoji;
+                currentLength += emojiLength;
+            }
+        });
+
+        if (currentMessage.length > 0) {
+            messages.push(currentMessage);
+        }
+
+        messages.forEach((message) => {
+            await interaction.reply(`\n${message}\n`);
+        });
+
 	},
 };
