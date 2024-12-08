@@ -20,12 +20,12 @@ module.exports = {
 		.setName('mememessagerandom')
 		.setDescription('Make your message more fun or cringe')
 		.addStringOption(option =>
-			option.setName('randomEmote')
+			option.setName('randomemote')
 				.setDescription('random emote')),
 
 
 	async execute(interaction) {
-		const emote = interaction.options.getString('randomEmote');
+		const emote = interaction.options.getString('randomemote');
 		const meme = ["🔥🔥🔥💯💯💯🗣️🗣️🗣️", "💀💀💀", "🔥🔥🔥", "🗣️🗣️🗣️🔥🔥🔥🔥🔥🔥", "🙏🙏😭😭", "💯💯💯", "☝️", "🙏🙏🗣🗣🗣🔊🔊🔊🔊🔊"];
 		const number = meme.length;
 		const random = Math.floor(Math.random() * length);
