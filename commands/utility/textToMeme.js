@@ -12,15 +12,10 @@ module.exports = {
 	async execute(interaction) {
 		const emote = interaction.options.getString('emote');
 		const str = emote.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-		const str1 = str.replace(/[^a-zA-Z0-9\s]/g, "").toLowerCase();
-		const text = str1.split('');
-		for (let i = 0; i < text.length; i++) {
-			if ( text[i] == '.' || text[i] == ',') {
-				text.splice(i, 1);
-				i--;
-			}
-		}
-        const textArray = str1.split('').map(char => {
+        const str1 = str.replace(/[^a-zA-Z0-9\s]/g, "").toLowerCase();
+        const str2 = str1.replace(/[:alnum:]+/g, "");
+
+        const textArray = str2.split('').map(char => {
             switch (char) {
                 case ' ':
                     return '<:space:1315336436987203716>';
