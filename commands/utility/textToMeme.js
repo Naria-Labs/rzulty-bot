@@ -16,7 +16,7 @@ module.exports = {
 		for (let i = 0; i < text.length; i++) {
 			text[i] = text[i].toLowerCase();
 			if (text[i] === ' ' || ',' || '.') {
-				i++;}
+				text[i] = '';}
         }
 		for (let i = 0; i < text.length; i++) {
 			text[i] = `:regional_indicator_${text[i]}:`;
