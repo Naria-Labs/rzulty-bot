@@ -13,7 +13,7 @@ module.exports = {
 		const emote = interaction.options.getString('emote');
 		const str = emote.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
         const str1 = str.replace(/[^a-zA-Z0-9\s]/g, "").toLowerCase();
-        const str2 = str1.replace(/[:alnum:]/g, "");
+        const str2 = str1.replace(/[[:alnum:]]+/g, "");
 
         const textArray = str2.split('').map(char => {
             switch (char) {
