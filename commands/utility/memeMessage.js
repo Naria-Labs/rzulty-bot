@@ -2,7 +2,7 @@
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('memeMessage')
+		.setName('mememessage')
 		.setDescription('Make your message more fun or cringe')
 		.addStringOption(option =>
 			option.setName('emote')
@@ -17,7 +17,7 @@ module.exports = {
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('memeMessageRandom')
+		.setName('mememessagerandom')
 		.setDescription('Make your message more fun or cringe')
 		.addStringOption(option =>
 			option.setName('randomEmote')
