@@ -28,7 +28,7 @@ module.exports = {
 		const emote = interaction.options.getString('randomemote');
 		const meme = ["🔥🔥🔥💯💯💯🗣️🗣️🗣️", "💀💀💀", "🔥🔥🔥", "🗣️🗣️🗣️🔥🔥🔥🔥🔥🔥", "🙏🙏😭😭", "💯💯💯", "☝️", "🙏🙏🗣🗣🗣🔊🔊🔊🔊🔊"];
 		const number = meme.length;
-		const random = Math.floor(Math.random() * length);
+		const random = Math.floor(Math.random() * meme.length);
 
 		await interaction.reply(`${emote} ${meme[random]}`);
 	},
