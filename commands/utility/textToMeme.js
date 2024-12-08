@@ -20,7 +20,7 @@ module.exports = {
 				i--;
 			}
 		}
-        const textArray = sanitizedStr.split('').map(char => {
+        const textArray = str1.split('').map(char => {
             switch (char) {
                 case ' ':
                     return `${char}`;
