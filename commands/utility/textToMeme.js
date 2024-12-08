@@ -72,7 +72,7 @@ module.exports = {
 
         await interaction.reply(messages.shift());
         for (const message of messages) {
-            await interaction.followUp(message);
+            await interaction.channel.send(message);
         }
     },
 };
