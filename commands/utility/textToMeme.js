@@ -1,17 +1,16 @@
 const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName('mmessage')
-		.setDescription('Make your message more fun or cringe')
-		.addStringOption(option =>
-			option.setName('emote')
-				.setDescription('text to emotes')),
+    data: new SlashCommandBuilder()
+        .setName('mmessage')
+        .setDescription('Make your message more fun or cringe')
+        .addStringOption(option =>
+            option.setName('emote')
+                .setDescription('text to emotes')),
 
-
-	async execute(interaction) {
-		const emote = interaction.options.getString('emote');
-		const str = emote.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    async execute(interaction) {
+        const emote = interaction.options.getString('emote');
+        const str = emote.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
         const str1 = str.replace(/[^a-zA-Z0-9\s]/g, "").toLowerCase();
         const str2 = str1.replace(/[[:alnum:]]+/g, "");
 
@@ -43,7 +42,7 @@ module.exports = {
                     return `:regional_indicator_${char}:`;
             }
         });
-        const chunkSize = 2000; // Discord message limit I think ?
+        const chunkSize = 2000;
         let currentMessage = "";
         let currentLength = 0;
         const messages = [];
@@ -53,12 +52,12 @@ module.exports = {
 
             if (currentLength + emojiLength > chunkSize) {
                 if (emoji === '<:space:1315336436987203716>') {
-                    messages.push(currentMessage); 
-                    currentMessage = emoji; 
+                    messages.push(currentMessage);
+                    currentMessage = emoji;
                     currentLength = emojiLength;
                 } else {
-                    messages.push(currentMessage); 
-                    currentMessage = emoji; 
+                    messages.push(currentMessage);
+                    currentMessage = emoji;
                     currentLength = emojiLength;
                 }
             } else {
@@ -71,9 +70,9 @@ module.exports = {
             messages.push(currentMessage);
         }
 
-        messages.forEach((message) => {
-            interaction.reply(`\n${message}\n`);
-        });
-
-	},
+        await interaction.reply(messages.shift());
+        for (const message of messages) {
+            await interaction.followUp(message);
+        }
+    },
 };
