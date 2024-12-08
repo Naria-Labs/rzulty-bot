@@ -21,7 +21,7 @@ module.exports = {
 			}
 		}
 		for (let i = 0; i < text.length; i++) {
-			if (Math.floor(Math.random() * 2) == '0') {
+			if (Math.floor(Math.random() * 1) == '0') {
 				text[i] = `:regional_indicator_${text[i]}:`;
 			} else text[i] = `:${text[i]}:`;
 		}
