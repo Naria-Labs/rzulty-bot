@@ -18,7 +18,7 @@ module.exports = {
 	async execute(interaction) {
 		const userMentioned = interaction.options.getMember('user');
         const time = interaction.options.getInteger('time');
-		const unixTime = Math.floor((Date.now() / 1000) + `${time}`*60);
+		const unixTime = Math.floor((Date.now() / 1000) + `${time}` * 60);
 
 		if (!userMentioned.voice.channel) {
 			return interaction.reply({
@@ -33,12 +33,14 @@ module.exports = {
 				content: `User ${userMentioned} has been server muted for saying a bad word \nCooldown time <t:${unixTime}:R>`,
 				ephemeral: true
 			});
-			
-			wait(`${time}` * 1000)
-            await userMentioned.voice.setMute(false, 'You will get away from saying it. For now');
 		} catch (error) {
 			console.error(error);
 			await interaction.reply('There was an error trying to server muted the user');
 		}
+		setTimeout(unmute, `${time}` * 1000);
+		function unmute() {
+			await userMentioned.voice.setMute(false, 'You will get away from saying it. For now');
+		}
+
 	},
 };
