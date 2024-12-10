@@ -6,7 +6,7 @@ module.exports = {
 		.setDescription('Server mute for set ammount of time'),
 
 	async execute(interaction) {
-		const userMentioned = interaction.options.getUser('user');
+		const userMentioned = interaction.options.getMember('user');
 		await userMentioned.setMute(true, 'You did fucky wacky');
 	},
 };
