@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('servermute')
+		.setName('mute')
 		.setDescription('Server mute for set ammount of time')
 		.addUserOption(option =>
 			option.setName('user')
@@ -37,7 +37,7 @@ module.exports = {
 			console.error(error);
 			await interaction.reply('There was an error trying to server muted the user');
 		}
-		setTimeout(unmute, `${time}` * 6000); //does it need to be here ?
+		setTimeout(unmute, `${time}` * 60000); //does it need to be here ?
 		function unmute() {
 			userMentioned.voice.setMute(false, 'You will get away from saying it. For now');
 		}
