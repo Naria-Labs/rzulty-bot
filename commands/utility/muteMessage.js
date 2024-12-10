@@ -10,8 +10,12 @@ module.exports = {
 				.setRequired(true)
 		),
 
-	execute(interaction) {
-		const userMentioned = interaction.options.getUser('user');
-		userMentioned.setMute(true, 'You did fucky wacky');
+	async execute(interaction) {
+		const userMentioned = interaction.options.getMember('user');
+		if (!userMentioned)
+			return interaction.reply('User not found');
+
+		await userMentioned.voice.setDeaf(true, 'You did fucky wacky');
+        await interaction.reply(`User ${userMentioned} has been server muted for saying a bad word`);
 	},
 };
