@@ -30,7 +30,7 @@ module.exports = {
 		try {
 			await userMentioned.voice.setMute(true, 'You said some fucky wacky');
 			await interaction.reply({
-				description: `User ${userMentioned} has been server muted for saying a bad word \nCooldown time <t:${unixTime}:R>`,
+				content: `User ${userMentioned} has been server muted for saying a bad word \nCooldown time <t:${unixTime}:R>`,
 				ephemeral: true
 			});
 			
