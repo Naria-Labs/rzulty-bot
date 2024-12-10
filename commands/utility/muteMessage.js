@@ -12,10 +12,15 @@ module.exports = {
 
 	async execute(interaction) {
 		const userMentioned = interaction.options.getMember('user');
-		if (!userMentioned)
+		if (!userMentioned) {
 			return interaction.reply('User not found');
+		}
+		if (!userMentioned.voice.channel) {
+            return interaction.reply('User is not in a voice channel');
+		}
 
-		await userMentioned.voice.setDeaf(true, 'You did fucky wacky');
+
+		await userMentioned.voice.setMute(true, 'You said some fucky wacky');
         await interaction.reply(`User ${userMentioned} has been server muted for saying a bad word`);
 	},
 };
