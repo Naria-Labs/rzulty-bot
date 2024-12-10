@@ -29,7 +29,13 @@ module.exports = {
 
 		try {
 			await userMentioned.voice.setMute(true, 'You said some fucky wacky');
-			await interaction.reply(`User ${userMentioned} has been server muted for saying a bad word \nCooldown time <t:${unixTime}:R>`);
+			await interaction.reply({
+				description: `User ${userMentioned} has been server muted for saying a bad word \nCooldown time <t:${unixTime}:R>`,
+				ephemeral: true
+			});
+			
+			wait(`${time}` * 1000)
+            await userMentioned.voice.setMute(false, 'You will get away from saying it. For now');
 		} catch (error) {
 			console.error(error);
 			await interaction.reply('There was an error trying to server muted the user');
