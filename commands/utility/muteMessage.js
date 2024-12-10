@@ -39,7 +39,7 @@ module.exports = {
 		}
 		setTimeout(unmute, `${time}` * 1000);
 		function unmute() {
-			await userMentioned.voice.setMute(false, 'You will get away from saying it. For now');
+			userMentioned.voice.setMute(false, 'You will get away from saying it. For now');
 		}
 
 	},
