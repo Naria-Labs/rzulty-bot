@@ -45,10 +45,11 @@ module.exports = {
 			console.error(error);
 			await interaction.reply('There was an error trying to server muted the user');
 		}
-		setTimeout(unmute, `${time}` * 60000); //does it need to be here ?
-		function unmute() {
+
+		setTimeout(()=> {
 			userMentioned.voice.setMute(false, 'You will get away from saying it. For now');
-		}
+		},
+            `${time}` * 60000);
 
 	},
 };
