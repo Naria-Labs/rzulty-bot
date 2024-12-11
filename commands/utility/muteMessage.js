@@ -19,7 +19,6 @@ module.exports = {
 		const userMentioned = interaction.options.getMember('user');
 		const time = interaction.options.getInteger('time');
 		const user = interaction.member.roles.cache;
-		const userId = interaction.member.id;
 		const unixTime = Math.floor((Date.now() / 1000) + `${time}` * 60);
 		const goodRoles = ['Perhaps admin', 'Full part admin', 'Moderator'];
 
@@ -28,10 +27,9 @@ module.exports = {
 				context: `${user} is not in a voice channel`,
 				ephemeral: true
 			});
-		}
-		if (!user.has('632250692509237268')) {  //|| !user.has('632244499292225583') || !user.has('632244879216345138')) {
+		}else if (!user.has('632250692509237268')) {
 			return interaction.reply({
-				content: `${userID} you can't server mute ${userMentioned} because you dont have a ${goodRoles.join(' ')}`,
+				content: `${user} you can't server mute ${userMentioned} because you dont have a ${goodRoles}`,
 				ephemeral: true
 			});
 		}
