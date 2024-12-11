@@ -19,6 +19,8 @@ module.exports = {
 		const userMentioned = interaction.options.getMember('user');
         const time = interaction.options.getInteger('time');
 		const unixTime = Math.floor((Date.now() / 1000) + `${time}` * 60);
+        const author = interaction.user;
+		const roles = message.member.roles.cache;
 		const goodRoles = ['Perhaps admin', 'Full part admin', 'Moderator'];
 
 		if (!userMentioned.voice.channel) {
@@ -27,9 +29,9 @@ module.exports = {
 				ephemeral: true
 			});
 		}
-		if (!userMentioned.roles.cache.has('632250692509237268')) {
+		if (!goodRoles.some((id) => author.has(id))) {
 			return interaction.reply({
-				content: `You can't server mute ${userMentioned} because you dont have a ${goodRoles}`,
+				content: `You can't server mute ${userMentioned} because you dont have a any of the : ${goodRoles.join(' ')}`,
 				ephemeral: true
 			});
 		}
