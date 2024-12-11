@@ -18,7 +18,7 @@ module.exports = {
 	async execute(interaction) {
 		const userMentioned = interaction.options.getMember('user');
 		const time = interaction.options.getInteger('time');
-		const user = interaction.user.getMember;
+		const user = interaction.member.roles.cache;
 		const unixTime = Math.floor((Date.now() / 1000) + `${time}` * 60);
 		const goodRoles = ['Perhaps admin', 'Full part admin', 'Moderator'];
 
@@ -27,7 +27,7 @@ module.exports = {
 				context: `${user} is not in a voice channel`,
 				ephemeral: true
 			});
-		}else if (!user.roles.cache.has('632250692509237268')) {
+		}else if (!user.has('632250692509237268')) {
 			return interaction.reply({
 				content: `${user} you can't server mute ${userMentioned} because you dont have a ${goodRoles}`,
 				ephemeral: true
