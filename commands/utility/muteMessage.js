@@ -18,7 +18,7 @@ module.exports = {
 	async execute(interaction) {
 		const userMentioned = interaction.options.getMember('user');
 		const time = interaction.options.getInteger('time');
-        const user = interaction.user;
+		const user = interaction.user.getMember;
 		const unixTime = Math.floor((Date.now() / 1000) + `${time}` * 60);
 		const goodRoles = ['Perhaps admin', 'Full part admin', 'Moderator'];
 
