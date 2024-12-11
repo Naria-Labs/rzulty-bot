@@ -26,7 +26,7 @@ module.exports = {
 				context: `${user} is not in a voice channel`,
 				ephemeral: true
 			});
-		} else if (!userMentioned.roles.cache.some(role => goodRoles.includes(role.name))) {
+		} else if (!userMentioned.roles.cache.some(role => role.name === 'Moderator')) {
 			return interaction.reply({
 				content: `You can't server mute ${userMentioned} because you dont have a ${goodRoles}`,
 				ephemeral: true
