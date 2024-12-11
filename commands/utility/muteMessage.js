@@ -28,7 +28,7 @@ module.exports = {
 				ephemeral: true
 			});
 		}
-		if (!user.roles.cache.has('632250692509237268')) {
+		if (!userMentioned.roles.cache.has('632250692509237268')) {
 			return interaction.reply({
 				content: `${user} you can't server mute ${userMentioned} because you dont have a ${goodRoles}`,
 				ephemeral: true
