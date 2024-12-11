@@ -17,21 +17,20 @@ module.exports = {
 
 	async execute(interaction) {
 		const userMentioned = interaction.options.getMember('user');
-        const time = interaction.options.getInteger('time');
+		const time = interaction.options.getInteger('time');
+        const user = interaction.user;
 		const unixTime = Math.floor((Date.now() / 1000) + `${time}` * 60);
-		const author = interaction.member.roles.cache;
-		const roles = message.member.roles.cache;
 		const goodRoles = ['Perhaps admin', 'Full part admin', 'Moderator'];
 
 		if (!userMentioned.voice.channel) {
 			return interaction.reply({
-				content: `${user} is not in a voice channel`,
+				context: `${user} is not in a voice channel`,
 				ephemeral: true
 			});
 		}
-		if (!author.some(role => goodRoles.includes(role.name))) {
+		if (!userMentioned.roles.cache.has('632250692509237268')) {
 			return interaction.reply({
-				content: `You can't server mute ${userMentioned} because you dont have a any of the : ${goodRoles.join(' ')}`,
+				content: `${user} you can't server mute ${userMentioned} because you dont have a ${goodRoles}`,
 				ephemeral: true
 			});
 		}
