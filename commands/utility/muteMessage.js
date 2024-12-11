@@ -30,7 +30,7 @@ module.exports = {
 			});
 		} else if (!user.has('632250692509237268') && !user.has('632244499292225583') && !user.has('632244879216345138')) {
 			return interaction.reply({
-				content: `<@${userID}> you can't server mute ${userMentioned} because you dont have a ${goodRoles}`,
+				content: `<@${userID}> you can't server mute ${userMentioned} because you dont have a ${goodRoles.join(' or ')}`,
 				ephemeral: true
 			});
 		}
