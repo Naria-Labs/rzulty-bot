@@ -42,7 +42,7 @@ module.exports = {
 
 
 		await interaction.reply({
-			content: `${BoardToString}`,
+			content: BoardToString,
             components: [row],
 		});
 	},
