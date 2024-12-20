@@ -17,14 +17,13 @@ module.exports = {
 		const userTag = userMentioned.tag;
 		const userHuman = userMentioned.bot;
 		const userAccentCol = userMentioned.hexAccentColor;
-		const userAccentColor = userAccentCol.toString(16);
 		const accentCol = userMentioned.accentColor;
-		const accentColor = accentCol.toString(16);
-		//const userBanner = userMentioned.bannerURL({ dynamic: true});
+		const col = userMentioned.displayColor;
+		const userBanner = userMentioned.bannerURL({ dynamic: true});
 		const smth = "'"
 
 		const avatarEmbed = new EmbedBuilder()
-			.setColor(`${accentColor}`)
+			.setColor(`${col}`)
 			.setTitle(`User ${userMentioned} profile`)
 			.setThumbnail(`${userMentioned.avatarURL({ dynamic: true})}`)
 			.setDescription(`User ${userMentioned} profile with other infromation about it`)
@@ -33,7 +32,7 @@ module.exports = {
 				{ name: 'Account created', value: `${userCreated}`, inline: true},
 				{ name: 'Tag', value: `${userTag}`, inline: true},
 				{ name: 'Bot or not', value: `${userHuman}` },
-				{ name: 'Hex of the color that user uses', value: `${userAccentColor}`, inline: true},
+				{ name: 'Hex of the color that user uses', value: `${userAccentCol}`, inline: true},
 				{ name: 'Accent color', value: `${accentColor}`, inline: true},
 			)
 			//.setImage(`${userBanner}`)
