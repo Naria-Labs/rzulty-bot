@@ -20,7 +20,7 @@ module.exports = {
 		const userBanner = userMentioned.bannerURL({ dynamic: true});
 		const smth = "'"
 
-		const avatarEmbed = new MessageEmbed()
+		const avatarEmbed = new EmbedBuilder()
 			.setColor(`${accentColor}`)
 			.setTitle(`User ${userMentioned} profile`)
 			.setThumbnail(`${userMentioned.avatarURL({ dynamic: true})}`)
@@ -37,6 +37,6 @@ module.exports = {
 			.setTimestamp()
 			.setFooter({ text:`That${smth}s all folks!`, iconURL: 'https://i.ytimg.com/vi/AYZz_qYw_j4/maxresdefault.jpg'});
 
-		await interaction.reply(avatarEmbed);
+		await interaction.reply({ embeds: [avatarEmbed]});
 	},
 };
