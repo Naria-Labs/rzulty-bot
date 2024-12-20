@@ -22,26 +22,27 @@ module.exports = {
 			.setCustomId('primary')
 			.setLabel('left')
 			.setStyle(ButtonStyle.Primary)
-			.setEmoji('⬅️');
+			.setEmoji('a');
 		const up = new ButtonBuilder()
 			.setCustomId('primary')
 			.setLabel('up')
 			.setStyle(ButtonStyle.Primary)
-			.setEmoji('⬆️');
+			.setEmoji('b');
 		const down = new ButtonBuilder()
 			.setCustomId('primary')
 			.setLabel('down')
 			.setStyle(ButtonStyle.Primary)
-			.setEmoji('⬇️');
+			.setEmoji('c');
 		const right = new ButtonBuilder()
 			.setCustomId('primary')
 			.setLabel('right')
 			.setStyle(ButtonStyle.Primary)
-			.setEmoji('➡️');
+			.setEmoji('d');
+
         const row = new ActionRowBuilder()
             .addComponents(left, up, down, right);
 
-        BoardToString = Board.map(row => row.join('')).join('\n');
+        const BoardToString = Board.map(row => row.join('')).join('\n');
 
 
 		await interaction.reply({
