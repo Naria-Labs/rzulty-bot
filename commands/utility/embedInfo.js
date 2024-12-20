@@ -14,7 +14,6 @@ module.exports = {
 		const userMentioned = interaction.options.getMember('user');
 		const userID = interaction.member.id;
 		const userMentioned1 = interaction.options.getUser('user');
-		const userMentionedMember = await interaction.guild.members.fetch(user.id);
 		const userCreated = userMentionedMember.createdAt;
 		const userTag = userMentionedMember.tag;
 		const userHuman = userMentionedMember.bot;
