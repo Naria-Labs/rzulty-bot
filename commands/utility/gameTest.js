@@ -76,16 +76,16 @@ module.exports = {
             
             switch (buttonInteraction.customId) {
                 case 'left':
-                    (playerY > 0) ? playerY-- && left.setDisabled(true) : left.setDisabled(false);
+                    (playerY > 0) ? playerY-- && left.setDisabled(false) : left.setDisabled(true);
                     break;
                 case 'up':
-                    (playerX > 0) ? playerX-- && up.setDisabled(true) : up.setDisabled(false);
+                    (playerX > 0) ? playerX-- && up.setDisabled(false) : up.setDisabled(true);
                     break;
                 case 'down':
-                    (playerX < boardSize - 1) ? playerX++ && down.setDisabled(true) : down.setDisabled(false);
+                    (playerX < boardSize - 1) ? playerX++ && down.setDisabled(false) : down.setDisabled(true);
                     break;
                 case 'right':
-                    (playerY < boardSize - 1) ? playerY++ && right.setDisabled(true) : right.setDisabled(false);
+                    (playerY < boardSize - 1) ? playerY++ && right.setDisabled(false) : right.setDisabled(true);
                     break;
                 default:
                     break;
