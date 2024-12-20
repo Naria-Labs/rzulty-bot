@@ -9,7 +9,10 @@ Bot for specific functions on Discord
 -  Where tag is a list of : Public, SFW, Functional, Source
 
 `/mgenrandom `
-- Random message and after that ther are emotes
+- After the message there are emotes e.g. LGTM🔥🔥🔥
   
 `/mmessage`
-- Message that is translated to emotes like :regional_indicator_c:  
+- Message that is translated to emotes. Reads any letter and translate it to the "normal" letter ę => e etc. works on numbers dosent work on "." , "," for simplicity case 
+
+`/mute [discordUser] [muteTime]`
+- command that make the user server mute for set ammount of time, after the time is up the same user is being unmuted (needs at least one of three roles specified in code to make it work) 
