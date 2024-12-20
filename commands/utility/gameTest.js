@@ -61,30 +61,31 @@ module.exports = {
 
         collector.on('collect', async buttonInteraction => {
 
-            (playerY === 0) ? left.setDisabled(true) : left.setDisabled(false);
-            (playerY === boardSize) ? right.setDisabled(true) : right.setDisabled(false);
-            (playerX === 0) ? up.setDisabled(true) : up.setDisabled(false);
-            (playerX === boardSize) ? down.setDisabled(true) : down.setDisabled(false);
 
             if (buttonInteraction.user.id !== interaction.user.id) {
                 return buttonInteraction.reply({ content: 'This game is not for you!', ephemeral: true });
             }
+
+            //(playerY === 0) ? left.setDisabled(true) : left.setDisabled(false);
+           // (playerY === boardSize) ? right.setDisabled(true) : right.setDisabled(false);
+           // (playerX === 0) ? up.setDisabled(true) : up.setDisabled(false);
+            //(playerX === boardSize) ? down.setDisabled(true) : down.setDisabled(false);
 
             Board[playerX][playerY] = '<:space:1315336436987203716>';
 
             
             switch (buttonInteraction.customId) {
                 case 'left':
-                    if (playerY > 0) playerY--;
+                    (playerY > 0) ? playerY-- && left.setDisabled(true) : left.setDisabled(false);
                     break;
                 case 'up':
-                    if (playerX > 0) playerX--;
+                    (playerX > 0) ? playerX-- && up.setDisabled(true) : up.setDisabled(false);
                     break;
                 case 'down':
-                    if (playerX < boardSize - 1) playerX++;
+                    (playerX < boardSize - 1) ? playerX++ && down.setDisabled(true) : down.setDisabled(false);
                     break;
                 case 'right':
-                    if (playerY < boardSize - 1) playerY++;
+                    if (playerY < boardSize - 1) ? playerY++ && right.setDisabled(true) : right.setDisabled(false);
                     break;
                 default:
                     break;
