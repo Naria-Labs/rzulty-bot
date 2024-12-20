@@ -13,8 +13,9 @@ module.exports = {
 		const author = interaction.member;
 		const userMentioned = interaction.options.getMember('user');
 		const userID = interaction.member.id;
-		const userMentionedMember = interaction.options.getUser('user');
-		const userCreated = userMentioned.createdAt;
+		const userMentioned1 = interaction.options.getUser('user');
+		const userMentionedMember = await interaction.guild.members.fetch(user.id);
+		const userCreated = userMentionedMember.createdAt;
 		const userTag = userMentionedMember.tag;
 		const userHuman = userMentionedMember.bot;
 		const userAccentCol = userMentionedMember.hexAccentColor;
@@ -30,7 +31,7 @@ module.exports = {
 			.setThumbnail(`${thumbnail}`)
 			.setDescription(`User ${userMentioned} profile with other infromation about it`)
 			.addFields(
-				{ name: 'Name', value: `<@${userMentioned}>`, inline: true},
+				{ name: 'Name', value: `${userMentioned}`, inline: true},
 				{ name: 'Account created', value: `${userCreated}`, inline: true},
 				{ name: 'Tag', value: `${userTag}`, inline: true},
 				{ name: 'Bot or not', value: `${userHuman}` },
