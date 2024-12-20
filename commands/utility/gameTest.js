@@ -75,7 +75,7 @@ module.exports = {
                     break;
             }
 
-            Board[playerX][playerY] = '<a:ASGawrA:755990103473651803>'; 
+            Board[playerX][playerY] = '<:gawrguraPat:1015567722404393011>'; 
 
             await buttonInteraction.update({
                 content: getBoardString(),
