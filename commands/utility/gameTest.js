@@ -41,8 +41,14 @@ module.exports = {
             .setStyle(ButtonStyle.Primary)
             .setEmoji('➡️');
 
+        const score = new ButtonBuilder()
+            .setCustomId('score')
+            .setStyle(ButtonStyle.Secondary)
+            .setLabel('Score')
+            .setDisabled(true);
+
         const row = new ActionRowBuilder()
-            .addComponents(left, up, down, right);
+            .addComponents(left, up, down, right, score);
 
         await interaction.reply({
             content: getBoardString(),
@@ -57,6 +63,11 @@ module.exports = {
             }
 
             Board[playerX][playerY] = '<:space:1315336436987203716>';
+
+            (playerX = 0) ? left.setDisabled(true) : pass; 
+            (playerX = boardSize - 1) ? right.setDisabled(true) : pass;
+            (playerY = 0) ? up.setDisabled(true) : pass;
+            (playerY = boardSize - 1) ? down.setDisabled(true) : pass;
 
             switch (buttonInteraction.customId) {
                 case 'left':
@@ -74,6 +85,8 @@ module.exports = {
                 default:
                     break;
             }
+
+
 
             Board[playerX][playerY] = '<:trolldespair:1314248186352763003>'; 
 
