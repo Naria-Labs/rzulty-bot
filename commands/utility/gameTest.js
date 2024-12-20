@@ -17,7 +17,7 @@ module.exports = {
 
         let playerX = Math.floor(Math.random() * boardSize);
         let playerY = Math.floor(Math.random() * boardSize);
-        Board[playerX][playerY] = '<a:ASGawrA:755990103473651803>';
+        Board[playerX][playerY] = '<:trolldespair:1314248186352763003>';
 
         const getBoardString = () => Board.map(row => row.join('')).join('\n');
 
@@ -75,7 +75,7 @@ module.exports = {
                     break;
             }
 
-            Board[playerX][playerY] = '<:gawrguraPat:1015567722404393011>'; 
+            Board[playerX][playerY] = '<:trolldespair:1314248186352763003>'; 
 
             await buttonInteraction.update({
                 content: getBoardString(),
