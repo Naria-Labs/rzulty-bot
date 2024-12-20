@@ -17,7 +17,7 @@ module.exports = {
 	async execute(interaction) {
 
 		const board = interaction.options.getInteger('number');
-		const Board = Array.from({ lenght: board }, () => Array(board).fill('<:space:1315336436987203716>'));
+		const Board = Array.from({ length: board }, () => Array(board).fill('<:space:1315336436987203716>'));
 		const left = new ButtonBuilder()
 			.setCustomId('left')
 			.setStyle(ButtonStyle.Primary)
