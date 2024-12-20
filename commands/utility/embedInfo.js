@@ -4,7 +4,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('embed')
 		.setDescription('See someone or yourself in embed')
-		.addStringOption(option =>
+		.addUserOption(option =>
 			option.setName('user')
 				.setDescription('set a user that you wanna embed')),
 
@@ -37,6 +37,6 @@ module.exports = {
 			.setTimestamp()
 			.setFooter({ text:`That${smth}s all folks!`, iconURL: 'https://i.ytimg.com/vi/AYZz_qYw_j4/maxresdefault.jpg'});
 
-		await interaction.author.sent(avatarEmbed);
+		await interaction.reply(avatarEmbed);
 	},
 };
