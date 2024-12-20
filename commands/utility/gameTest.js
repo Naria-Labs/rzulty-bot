@@ -85,7 +85,7 @@ module.exports = {
                     (playerX < boardSize - 1) ? playerX++ && down.setDisabled(true) : down.setDisabled(false);
                     break;
                 case 'right':
-                    if (playerY < boardSize - 1) ? playerY++ && right.setDisabled(true) : right.setDisabled(false);
+                    (playerY < boardSize - 1) ? playerY++ && right.setDisabled(true) : right.setDisabled(false);
                     break;
                 default:
                     break;
