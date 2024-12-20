@@ -19,25 +19,25 @@ module.exports = {
 		const board = interaction.options.getInteger('number');
 		const Board = Array.from({ lenght: board }, () => Array(cols).fill('<:space:1315336436987203716>'));
 		const left = new ButtonBuilder()
-			.setCustomId('primary')
+			.setCustomId('left')
 			.setLabel('left')
 			.setStyle(ButtonStyle.Primary)
-			//.setEmoji('◀️');
+			.setEmoji('⬅');
 		const up = new ButtonBuilder()
-			.setCustomId('primary')
+			.setCustomId('up')
 			.setLabel('up')
 			.setStyle(ButtonStyle.Primary)
-			//.setEmoji('🔼');
+			.setEmoji('⬆');
 		const down = new ButtonBuilder()
-			.setCustomId('primary')
+			.setCustomId('down')
 			.setLabel('down')
 			.setStyle(ButtonStyle.Primary)
-			//.setEmoji('🔽');
+			.setEmoji('⬇️');
 		const right = new ButtonBuilder()
-			.setCustomId('primary')
+			.setCustomId('right')
 			.setLabel('right')
 			.setStyle(ButtonStyle.Primary)
-			//.setEmoji(':rightwards_hand:');
+			.setEmoji('➡️');
 
         const row = new ActionRowBuilder()
             .addComponents(left, up, down, right);
