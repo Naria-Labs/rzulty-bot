@@ -15,9 +15,8 @@ module.exports = {
 
 
 	async execute(interaction) {
-		const board = interaction.options.getInteger('number'),
 
-
+		const board = interaction.options.getInteger('number');
 		const Board = Array.from({ lenght: board }, () => Array(cols).fill('<:space:1315336436987203716>'));
 		const left = new ButtonBuilder()
 			.setCustomId('primary')
