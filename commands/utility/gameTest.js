@@ -91,7 +91,7 @@ module.exports = {
                     break;
             }
 
-            scoreValue++;
+            scoreValue++; //change it later for a a smth that is not incrementing the score every time you move
             updateScoreButton();
             updateButtons();
 
