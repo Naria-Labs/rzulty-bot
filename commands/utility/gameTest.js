@@ -17,7 +17,7 @@ module.exports = {
 	async execute(interaction) {
 		const board = interaction.options.getInteger('number'),
 
-		const row = board;
+		const rows = board;
 		const column = board;
 		const Board = Array.from({ lenght: rows }, () => Array(cols).fill('<:space:1315336436987203716>'));
 		const left = new ButtonBuilder()
