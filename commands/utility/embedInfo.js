@@ -26,12 +26,12 @@ module.exports = {
 			.setThumbnail(`${userMentioned.avatarURL({ dynamic: true})}`)
 			.setDescription(`User ${userMentioned} profile with other infromation about it`)
 			.addFields(
-				{ name: 'Name', value: `${userID}`, inline: true}
-				{ name: 'Account created', value: `${userCreated}`, inline: true}
-				{ name: 'Tag', value: `${userTag}`, inline: true}
-				{ name: 'Bot or not', value: `${userHuman}` }
-				{ name: 'Hex of the color that user uses', value: `${userAccentCol}`, inline: true}
-				{ name: 'Accent color', value: `${accentColor}`, inline: true}
+				{ name: 'Name', value: `${userID}`, inline: true},
+				{ name: 'Account created', value: `${userCreated}`, inline: true},
+				{ name: 'Tag', value: `${userTag}`, inline: true},
+				{ name: 'Bot or not', value: `${userHuman}` },
+				{ name: 'Hex of the color that user uses', value: `${userAccentCol}`, inline: true},
+				{ name: 'Accent color', value: `${accentColor}`, inline: true},
 			)
 			.setImage(`${userBanner}`)
 			.setTimestamp()
