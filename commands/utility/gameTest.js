@@ -76,7 +76,7 @@ module.exports = {
             
             switch (buttonInteraction.customId) {
                 case 'left':
-                    (playerY > -1) ? playerY--; left.setDisabled(false) : left.setDisabled(true);
+                    (playerY > -1) ? playerY-- && left.setDisabled(false) : left.setDisabled(true);
                     break;
                 case 'up':
                     (playerX > -1) ? playerX-- && up.setDisabled(false) : up.setDisabled(true);
