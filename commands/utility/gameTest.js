@@ -49,20 +49,23 @@ module.exports = {
 
         const row = new ActionRowBuilder()
             .addComponents(left, up, down, right, score);
-
-        (playerY === 0) ? left.setDisabled(true) : left.setDisabled(false);
-        (playerY === boardSize) ? right.setDisabled(true) : right.setDisabled(false);
-        (playerX === 0) ? up.setDisabled(true) : up.setDisabled(false);
-        (playerX === boardSize) ? down.setDisabled(true) : down.setDisabled(false);
         
         await interaction.reply({
             content: getBoardString(),
             components: [row],
+
         });
 
         const collector = interaction.channel.createMessageComponentCollector({ time: 60000 });
 
+
         collector.on('collect', async buttonInteraction => {
+
+            (playerY === 0) ? left.setDisabled(true) : left.setDisabled(false);
+            (playerY === boardSize) ? right.setDisabled(true) : right.setDisabled(false);
+            (playerX === 0) ? up.setDisabled(true) : up.setDisabled(false);
+            (playerX === boardSize) ? down.setDisabled(true) : down.setDisabled(false);
+
             if (buttonInteraction.user.id !== interaction.user.id) {
                 return buttonInteraction.reply({ content: 'This game is not for you!', ephemeral: true });
             }
