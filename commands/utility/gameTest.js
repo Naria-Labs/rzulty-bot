@@ -20,24 +20,24 @@ module.exports = {
 		const Board = Array.from({ lenght: board }, () => Array(cols).fill('<:space:1315336436987203716>'));
 		const left = new ButtonBuilder()
 			.setCustomId('primary')
-			.setLabel('left')
+			.setLabel('⬅')
 			.setStyle(ButtonStyle.Primary)
 			.setEmoji('a');
 		const up = new ButtonBuilder()
 			.setCustomId('primary')
 			.setLabel('up')
 			.setStyle(ButtonStyle.Primary)
-			.setEmoji('b');
+			.setEmoji('⬆');
 		const down = new ButtonBuilder()
 			.setCustomId('primary')
 			.setLabel('down')
 			.setStyle(ButtonStyle.Primary)
-			.setEmoji('c');
+			.setEmoji('⬇');
 		const right = new ButtonBuilder()
 			.setCustomId('primary')
 			.setLabel('right')
 			.setStyle(ButtonStyle.Primary)
-			.setEmoji('d');
+			.setEmoji('➡');
 
         const row = new ActionRowBuilder()
             .addComponents(left, up, down, right);
