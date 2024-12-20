@@ -12,8 +12,9 @@ module.exports = {
 	async execute(interaction) {
 		const author = interaction.member;
 		const userMentioned = interaction.options.getMember('user');
-		const userID = interaction.member.id;
-		const userMentionedMember = interaction.options.getUser('user');
+		const userID = userMentioned.id;
+
+		const userMentionedMember = await interaction.client.users.fetch(userID, { force: true });
 		const userCreated = userMentionedMember.createdAt;
 		const userTag = userMentionedMember.tag;
 		const userHuman = userMentionedMember.bot;
