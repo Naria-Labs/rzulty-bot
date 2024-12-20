@@ -23,7 +23,7 @@ module.exports = {
 		const smth = "'"
 
 		const avatarEmbed = new EmbedBuilder()
-			.setColor(`${col}`)
+			.setColor(`${userAccentCol}`)
 			.setTitle(`User ${userMentioned} profile`)
 			.setThumbnail(`${userMentioned.avatarURL({ dynamic: true})}`)
 			.setDescription(`User ${userMentioned} profile with other infromation about it`)
