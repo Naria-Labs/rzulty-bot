@@ -29,7 +29,7 @@ module.exports = {
 			.setThumbnail(`${thumbnail}`)
 			.setDescription(`User ${userMentioned} profile with other infromation about it`)
 			.addFields(
-				{ name: 'Name', value: `${userID}`, inline: true},
+				{ name: 'Name', value: `${userMentioned}`, inline: true},
 				{ name: 'Account created', value: `${userCreated}`, inline: true},
 				{ name: 'Tag', value: `${userTag}`, inline: true},
 				{ name: 'Bot or not', value: `${userHuman}` },
@@ -40,6 +40,6 @@ module.exports = {
 			.setTimestamp()
 			.setFooter({ text:`That${smth}s all folks!`, iconURL: 'https://i.ytimg.com/vi/AYZz_qYw_j4/maxresdefault.jpg'});
 
-		await interaction.reply({ embeds: [avatarEmbed]});
+		await interaction.fetchReply({ embeds: [avatarEmbed]});
 	},
 };
