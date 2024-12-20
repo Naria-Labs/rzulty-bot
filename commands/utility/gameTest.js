@@ -22,22 +22,22 @@ module.exports = {
 			.setCustomId('primary')
 			.setLabel('left')
 			.setStyle(ButtonStyle.Primary)
-			.setEmoji('◀️');
+			//.setEmoji('◀️');
 		const up = new ButtonBuilder()
 			.setCustomId('primary')
 			.setLabel('up')
 			.setStyle(ButtonStyle.Primary)
-			.setEmoji('🔼');
+			//.setEmoji('🔼');
 		const down = new ButtonBuilder()
 			.setCustomId('primary')
 			.setLabel('down')
 			.setStyle(ButtonStyle.Primary)
-			.setEmoji('🔽');
+			//.setEmoji('🔽');
 		const right = new ButtonBuilder()
 			.setCustomId('primary')
 			.setLabel('right')
 			.setStyle(ButtonStyle.Primary)
-			.setEmoji(':rightwards_hand:');
+			//.setEmoji(':rightwards_hand:');
 
         const row = new ActionRowBuilder()
             .addComponents(left, up, down, right);
