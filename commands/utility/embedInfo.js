@@ -19,13 +19,14 @@ module.exports = {
 		const userAccentCol = userMentioned.hexAccentColor;
 		const accentCol = userMentioned.accentColor;
 		const col = userMentioned.displayColor;
+		const thumbnail = userMentioned.displayAvatarURL();
 		//const userBanner = userMentioned.bannerURL({ dynamic: true});
 		const smth = "'"
 
 		const avatarEmbed = new EmbedBuilder()
 			.setColor(0x003253) //f you discord
 			.setTitle(`User ${userMentioned} profile`)
-			.setThumbnail(`${userMentioned.avatarURL({ dynamic: true})}`)
+			.setThumbnail(`${thumbnail}`)
 			.setDescription(`User ${userMentioned} profile with other infromation about it`)
 			.addFields(
 				{ name: 'Name', value: `${userID}`, inline: true},
