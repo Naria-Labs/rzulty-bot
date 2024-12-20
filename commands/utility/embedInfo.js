@@ -34,7 +34,7 @@ module.exports = {
 				{ name: 'Tag', value: `${userTag}`, inline: true},
 				{ name: 'Bot or not', value: `${userHuman}` },
 				{ name: 'Hex of the color that user uses', value: `${userAccentCol}`, inline: true},
-				{ name: 'Accent color', value: `${accentColor}`, inline: true},
+				{ name: 'Accent color', value: `${accentCol}`, inline: true},
 			)
 			//.setImage(`${userBanner}`)
 			.setTimestamp()
