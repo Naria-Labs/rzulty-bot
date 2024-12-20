@@ -17,7 +17,7 @@ module.exports = {
 		const userHuman = userMentioned.bot;
 		const userAccentCol = userMentioned.hexAccentColor;
 		const accentColor = userMentioned.accentColor;
-		const userBanner = userMentioned.bannerURL({ dynamic: true});
+		//const userBanner = userMentioned.bannerURL({ dynamic: true});
 		const smth = "'"
 
 		const avatarEmbed = new EmbedBuilder()
@@ -33,7 +33,7 @@ module.exports = {
 				{ name: 'Hex of the color that user uses', value: `${userAccentCol}`, inline: true},
 				{ name: 'Accent color', value: `${accentColor}`, inline: true},
 			)
-			.setImage(`${userBanner}`)
+			//.setImage(`${userBanner}`)
 			.setTimestamp()
 			.setFooter({ text:`That${smth}s all folks!`, iconURL: 'https://i.ytimg.com/vi/AYZz_qYw_j4/maxresdefault.jpg'});
 
