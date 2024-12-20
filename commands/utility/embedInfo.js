@@ -23,7 +23,7 @@ module.exports = {
 		const smth = "'"
 
 		const avatarEmbed = new EmbedBuilder()
-			.setColor('0x003253') //f you discord
+			.setColor(0x003253) //f you discord
 			.setTitle(`User ${userMentioned} profile`)
 			.setThumbnail(`${userMentioned.avatarURL({ dynamic: true})}`)
 			.setDescription(`User ${userMentioned} profile with other infromation about it`)
