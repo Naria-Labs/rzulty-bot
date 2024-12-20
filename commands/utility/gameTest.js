@@ -6,7 +6,7 @@ module.exports = {
         .setDescription('Starts the game')
         .addIntegerOption(option =>
             option.setName('number')
-                .setDescription('Set the board')
+                .setDescription('Set the board size')
                 .setMinValue(1)
                 .setMaxValue(8)
         ),
@@ -19,7 +19,10 @@ module.exports = {
         let playerY = Math.floor(Math.random() * boardSize);
         Board[playerX][playerY] = '<:trolldespair:1314248186352763003>';
 
+        let scoreValue = 0;
+
         const getBoardString = () => Board.map(row => row.join('')).join('\n');
+        const updateScoreButton = () => score.setLabel(`Score: ${scoreValue}`);
 
         const left = new ButtonBuilder()
             .setCustomId('left')
@@ -44,56 +47,55 @@ module.exports = {
         const score = new ButtonBuilder()
             .setCustomId('score')
             .setStyle(ButtonStyle.Secondary)
-            .setLabel('Score')
+            .setLabel('Score: 0')
             .setDisabled(true);
 
         const row = new ActionRowBuilder()
             .addComponents(left, up, down, right, score);
-        
+
         await interaction.reply({
             content: getBoardString(),
             components: [row],
-
         });
 
         const collector = interaction.channel.createMessageComponentCollector({ time: 60000 });
 
+        const updateButtons = () => {
+            left.setDisabled(playerY === 0);
+            up.setDisabled(playerX === 0);
+            down.setDisabled(playerX === boardSize - 1);
+            right.setDisabled(playerY === boardSize - 1);
+        };
 
         collector.on('collect', async buttonInteraction => {
-
-
             if (buttonInteraction.user.id !== interaction.user.id) {
                 return buttonInteraction.reply({ content: 'This game is not for you!', ephemeral: true });
             }
 
-            //(playerY === 0) ? left.setDisabled(true) : left.setDisabled(false);
-           // (playerY === boardSize) ? right.setDisabled(true) : right.setDisabled(false);
-           // (playerX === 0) ? up.setDisabled(true) : up.setDisabled(false);
-            //(playerX === boardSize) ? down.setDisabled(true) : down.setDisabled(false);
-
             Board[playerX][playerY] = '<:space:1315336436987203716>';
 
-            
             switch (buttonInteraction.customId) {
                 case 'left':
-                    (playerY > 1) ? playerY-- && left.setDisabled(false) : left.setDisabled(true);
+                    if (playerY > 0) playerY--;
                     break;
                 case 'up':
-                    (playerX > 1) ? playerX-- && up.setDisabled(false) : up.setDisabled(true);
+                    if (playerX > 0) playerX--;
                     break;
                 case 'down':
-                    (playerX < boardSize) ? playerX++ && down.setDisabled(false) : down.setDisabled(true);
+                    if (playerX < boardSize - 1) playerX++;
                     break;
                 case 'right':
-                    (playerY < boardSize) ? playerY++ && right.setDisabled(false) : right.setDisabled(true);
+                    if (playerY < boardSize - 1) playerY++;
                     break;
                 default:
                     break;
             }
 
+            scoreValue++;
+            updateScoreButton();
+            updateButtons();
 
-
-            Board[playerX][playerY] = '<:trolldespair:1314248186352763003>'; 
+            Board[playerX][playerY] = '<:trolldespair:1314248186352763003>';
 
             await buttonInteraction.update({
                 content: getBoardString(),
