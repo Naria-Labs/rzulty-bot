@@ -11,13 +11,13 @@ module.exports = {
 			option.setName('number')
 				.setDescription('Set the board')
 				.setMinValue(1)
-				.setMaxValue(6)),
+				.setMaxValue(8)),
 
 
 	async execute(interaction) {
 
 		const board = interaction.options.getInteger('number');
-		const Board = Array.from({ lenght: board }, () => Array(cols).fill('<:space:1315336436987203716>'));
+		const Board = Array.from({ lenght: board }, () => Array(board).fill('<:space:1315336436987203716>'));
 		const left = new ButtonBuilder()
 			.setCustomId('left')
 			.setStyle(ButtonStyle.Primary)
@@ -42,7 +42,7 @@ module.exports = {
 
 
 		await interaction.reply({
-			content: `asadsdasdadasd${BoardToString}`,
+			content: `${BoardToString}`,
             components: [row],
 		});
 	},
