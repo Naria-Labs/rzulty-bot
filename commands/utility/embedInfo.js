@@ -11,8 +11,8 @@ module.exports = {
 
 	async execute(interaction) {
 		const author = interaction.member;
-		const userMentioned = interaction.options.getMember('user');
-		const userID = userMentioned.id;
+		const userMentionedUser = interaction.options.getUser('user');
+		const userID = userMentionedUser.id;
 
 		const userMentionedMember = await interaction.client.users.fetch(userID, { force: true });
 		const userCreated = userMentionedMember.createdAt;
@@ -21,6 +21,7 @@ module.exports = {
 		const userAccentCol = userMentionedMember.hexAccentColor;
 		const accentCol = userMentionedMember.accentColor;
 		const col = userMentionedMember.displayColor;
+		const userMentioned = interaction.options.getMember('user');
 		const thumbnail = userMentioned.displayAvatarURL();
 		//const userBanner = userMentioned.bannerURL({ dynamic: true});
 		const smth = "'"
