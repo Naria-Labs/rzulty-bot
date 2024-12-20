@@ -41,8 +41,11 @@ module.exports = {
         const row = new ActionRowBuilder()
             .addComponents(left, up, down, right);
 
+        BoardToString = Board.map(row => row.join('')).join('\n');
+
+
 		await interaction.reply({
-			content: [Board],
+			content: [BoardToString],
             components: [row],
 		});
 	},
