@@ -17,9 +17,8 @@ module.exports = {
 	async execute(interaction) {
 		const board = interaction.options.getInteger('number'),
 
-		const rows = board;
-		const column = board;
-		const Board = Array.from({ lenght: rows }, () => Array(cols).fill('<:space:1315336436987203716>'));
+
+		const Board = Array.from({ lenght: board }, () => Array(cols).fill('<:space:1315336436987203716>'));
 		const left = new ButtonBuilder()
 			.setCustomId('primary')
 			.setLabel('left')
@@ -44,7 +43,7 @@ module.exports = {
             .addComponents(left, up, down, right);
 
 		await interaction.reply({
-			content: [board],
+			content: [Board],
             components: [row],
 		});
 	},
