@@ -19,7 +19,7 @@ module.exports = {
 		const userAccentCol = userMentioned.hexAccentColor;
 		const accentCol = userMentioned.accentColor;
 		const col = userMentioned.displayColor;
-		const userBanner = userMentioned.bannerURL({ dynamic: true});
+		//const userBanner = userMentioned.bannerURL({ dynamic: true});
 		const smth = "'"
 
 		const avatarEmbed = new EmbedBuilder()
