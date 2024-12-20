@@ -52,7 +52,7 @@ module.exports = {
 			Board[cordx][cordy] = '<:space:1315336436987203716>';
 			Board[cordx][cordy - 1] = '<a:ASGawrA:755990103473651803>';
 			interaction.editReply({
-				BoardToString = Board.map(row => row.join('')).join('\n');
+				BoardToString = Board.map(row => row.join('')).join('\n')
             });
 		} else {
             interaction.ActionRowBuilder.setDisabled(true);
@@ -61,7 +61,7 @@ module.exports = {
             Board[cordx][cordy] = '<:space:1315336436987203716>';
 			Board[cordx - 1][cordy] = '<a:ASGawrA:755990103473651803>';
 			interaction.editReply({
-				BoardToString = Board.map(row => row.join('')).join('\n');
+				BoardToString = Board.map(row => row.join('')).join('\n')
 			});
 		} else {
 			interaction.ActionRowBuilder.setDisabled(true);
@@ -70,7 +70,7 @@ module.exports = {
             Board[cordx][cordy] = '<:space:1315336436987203716>';
 			Board[cordx + 1][cordy] = '<a:ASGawrA:755990103473651803>';
 			interaction.editReply({
-				BoardToString = Board.map(row => row.join('')).join('\n');
+				BoardToString = Board.map(row => row.join('')).join('\n')
 			});
 		} else {
 			interaction.ActionRowBuilder.setDisabled(true);
@@ -79,7 +79,7 @@ module.exports = {
             Board[cordx][cordy] = '<:space:1315336436987203716>';
 			Board[cordx][cordy + 1] = '<a:ASGawrA:755990103473651803>';
 			interaction.editReply({
-				BoardToString = Board.map(row => row.join('')).join('\n');
+				BoardToString = Board.map(row => row.join('')).join('\n')
 			});
 		} else {
 			interaction.ActionRowBuilder.setDisabled(true);
