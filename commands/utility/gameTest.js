@@ -65,9 +65,9 @@ module.exports = {
             Board[playerX][playerY] = '<:space:1315336436987203716>';
 
             (playerY === 0) ? left.setDisabled(true) : left.setDisabled(false); 
-            (playerY === (boardSize - 1)) ? right.setDisabled(true) : right.setDisabled(false);
+            (playerY === boardSize) ? right.setDisabled(true) : right.setDisabled(false);
             (playerX === 0) ? up.setDisabled(true) : up.setDisabled(false);
-            (playerX === (boardSize -1)) ? down.setDisabled(true) : down.setDisabled(false);
+            (playerX === boardSize) ? down.setDisabled(true) : down.setDisabled(false);
             
             switch (buttonInteraction.customId) {
                 case 'left':
