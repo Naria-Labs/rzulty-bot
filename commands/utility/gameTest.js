@@ -20,22 +20,18 @@ module.exports = {
 		const Board = Array.from({ lenght: board }, () => Array(cols).fill('<:space:1315336436987203716>'));
 		const left = new ButtonBuilder()
 			.setCustomId('left')
-			.setLabel('left')
 			.setStyle(ButtonStyle.Primary)
 			.setEmoji('⬅');
 		const up = new ButtonBuilder()
 			.setCustomId('up')
-			.setLabel('up')
 			.setStyle(ButtonStyle.Primary)
 			.setEmoji('⬆');
 		const down = new ButtonBuilder()
 			.setCustomId('down')
-			.setLabel('down')
 			.setStyle(ButtonStyle.Primary)
 			.setEmoji('⬇️');
 		const right = new ButtonBuilder()
 			.setCustomId('right')
-			.setLabel('right')
 			.setStyle(ButtonStyle.Primary)
 			.setEmoji('➡️');
 
@@ -46,7 +42,7 @@ module.exports = {
 
 
 		await interaction.reply({
-			content: `${BoardToString}`,
+			content: `asadsdasdadasd${BoardToString}`,
             components: [row],
 		});
 	},
