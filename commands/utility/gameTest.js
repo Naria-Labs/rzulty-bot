@@ -55,15 +55,35 @@ module.exports = {
             .setLabel('Score: 0')
             .setDisabled(true);
 
+        const time = new ButtonBuilder()
+            .setCustomId('time')
+            .setStyle(ButtonStyle.Secondary)
+            .setLabel('Time: 0')
+            .setDisabled(true);
+
         const row = new ActionRowBuilder()
             .addComponents(left, up, down, right, score);
 
+
+        const time = new ActionRowBuilder()
+            .addComponents(time);
+               
         await interaction.reply({
             content: getBoardString(),
             components: [row],
+            components: [time],
         });
 
         const collector = interaction.channel.createMessageComponentCollector({ time: 60000 });
+
+        const time = timeRemaining => {
+            time.setLabel(`Time: ${timeRemaining}`);
+            if (timeRemaining === 0) collector.stop();
+        }
+
+        timeRemaining(60);
+
+        setInterval(() => timeRemaining(timeRemaining - 1), 1000);
 
         const checkPosition = () => {
             if (playerX === pointX && playerY === pointY) {
@@ -115,6 +135,7 @@ module.exports = {
             await buttonInteraction.update({
                 content: getBoardString(),
                 components: [row],
+                components: [time],
             });
         });
 
