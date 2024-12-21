@@ -17,6 +17,11 @@ module.exports = {
 
         let playerX = Math.floor(Math.random() * boardSize);
         let playerY = Math.floor(Math.random() * boardSize);
+
+        let pointX = Math.floor(Math.random() * boardSize);
+        let pointY = Math.floor(Math.random() * boardSize);
+
+        Board[pointX][pointY] = '<:yippee:1314224420566339615>';
         Board[playerX][playerY] = '<:trolldespair:1314248186352763003>';
 
         let scoreValue = 0;
@@ -60,6 +65,13 @@ module.exports = {
 
         const collector = interaction.channel.createMessageComponentCollector({ time: 60000 });
 
+        const checkPosition = () => {
+            if (playerX === pointX && playerY === pointY) {
+                pointX = Math.floor(Math.random() * boardSize);
+                pointY = Math.floor(Math.random() * boardSize);
+                scoreValue++;
+            }
+        };
         const updateButtons = () => {
             left.setDisabled(playerY === 0);
             up.setDisabled(playerX === 0);
@@ -91,7 +103,9 @@ module.exports = {
                     break;
             }
 
-            scoreValue++; //change it later for a a smth that is not incrementing the score every time you move
+            
+            //scoreValue++; //change it later for a a smth that is not incrementing the score every time you move
+            checkPosition();
             updateScoreButton();
             updateButtons();
 
