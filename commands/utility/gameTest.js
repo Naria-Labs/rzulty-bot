@@ -148,7 +148,8 @@ module.exports = {
                         //parse the data
                         const scoreData = JSON.parse(data);
                         //update the score
-                        scoreData.score += scoreValue;
+                        //e.g. scoreData.score = 91 scoreValue = 100
+                        (scoreValue >= scoreData.score) ? scoreData.score = scoreValue : scoreData.score = scoreData.score;
                         //write the updated score to the file
                         fs.writeFile(scoreFile, JSON.stringify(scoreData, null, 4), (err) => {
                             if (err) {
