@@ -158,12 +158,23 @@ module.exports = {
                         });
                     });
                 } else {
-                    //if the file does not exist, create a new file
-                    fs.writeFile(scoreFile, JSON.stringify({ score: scoreValue }, null, 4), (err) => {
+                    //if the file does not exist, create a new file and directory
+                    fs.mkdir('./scores', { recursive: true }, (err) => {
                         if (err) {
                             console.error(err);
                             return;
                         }
+                        //create a new score object
+                        const scoreData = {
+                            score: scoreValue,
+                        };
+                        //write the score object to the file
+                        fs.writeFile(scoreFile, JSON.stringify(scoreData, null, 4), (err) => {
+                            if (err) {
+                                console.error(err);
+                                return;
+                            }
+                        });
                     });
                 }
                
