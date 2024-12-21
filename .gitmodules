@@ -4,3 +4,4 @@
 [submodule "modules/priest-module"]
 	path = modules/priest-module
 	url = https://github.com/Naria-Labs/priest-module
+	branch = develop
