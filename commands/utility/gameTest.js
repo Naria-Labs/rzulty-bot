@@ -110,6 +110,7 @@ module.exports = {
             updateButtons();
 
             Board[playerX][playerY] = '<:trolldespair:1314248186352763003>';
+            Board[pointX][pointY] = '<:yippee:1314224420566339615>';
 
             await buttonInteraction.update({
                 content: getBoardString(),
