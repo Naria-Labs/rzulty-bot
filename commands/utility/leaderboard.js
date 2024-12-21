@@ -14,16 +14,24 @@ module.exports = {
 
 		const fs = require('fs'); 
 		const scoreFile = './scores';
-		//takes the file name minus .json and the score and adds it to the array
-		const scores = fs.readdirSync(scoreFile).map(file => {
-			const score = require(`./scores/${file}`);
-			return {
-				name: file.replace('.json', ''),
-				score: score
-			};
-		});
-		//sorts all of the scores from highest to lowest with the name ID
-		const sortedScores = scores.sort((a, b) => b.score - a.score);
+        //takes the directory of the files and reads them
+        //where filename is id of the user
+        //inside the file is the score of the user
+        const files = fs.readdirSync(scoreFile);
+        //creates an array of objects
+        const scores = [];
+        //for each file in the directory
+        for (const file of files) {
+            //reads the file
+            const data = fs.readFileSync(`${scoreFile}/${file}`);
+            //parses the data
+            const scoreData = JSON.parse(data);
+            //pushes the data to the array
+            scores.push({ id: file, score: scoreData.score });
+        }
+        //sorts the scores
+        const sortedScores = scores.sort((a, b) => b.score - a.score);
+
 
 		//creates the embed
         const leaderboardEmbed = new EmbedBuilder()
