@@ -39,7 +39,7 @@ module.exports = {
 				const position = ['1st', '2nd', '3rd', '4th', '5th'][index];
 				leaderboardEmbed.addFields({
 					name: position,
-					value: `${player.id} - ${player.score}`,
+					value: `Name: <@${player.id}> Score: ${player.score}`,
 					inline: true,
 				});
 			});
