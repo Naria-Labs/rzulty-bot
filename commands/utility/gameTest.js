@@ -125,6 +125,11 @@ module.exports = {
             down.setDisabled(true);
             right.setDisabled(true);
 
+            interaction.editReply({
+                content: 'Game over!',
+                components: [row],
+            });
+
             //create array of scores and save it to a file with the user id
             let scores = [];
             scores.push(scoreValue);
@@ -144,11 +149,6 @@ module.exports = {
                     console.error(err);
                     return;
                 }
-            });
-
-            interaction.editReply({
-                content: 'Game over!',
-                components: [row],
             });
         });
     },
