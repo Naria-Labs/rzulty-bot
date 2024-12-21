@@ -40,7 +40,7 @@ module.exports = {
 				leaderboardEmbed.addFields({
 					name: position,
 					value: `Name: <@${player.id}> Score: ${player.score}`,
-					inline: true,
+					inline: false,
 				});
 			});
 
