@@ -134,23 +134,39 @@ module.exports = {
             const fs = require('fs');
 
             function addOrUpdateScore(userId, scoreValue) {
-                const filePath = `./scores/${userId}.json`;
+                //create a new score json file for each user in scores directory
+                const scoreFile = `./scores/${userId}.json`;
 
-                fs.readFile(filePath, (err, data) => {
-                    if (err) {
-                        //if file doesn't exist
-                        if (err.code === 'ENOENT') {
-                            fs.writeFileSync(filePath, JSON.stringify([scoreValue]));
-                        } else {
+                //check if the file exists
+                if (fs.existsSync(scoreFile)) {
+                    //if it exists, read the file
+                    fs.readFile(scoreFile, 'utf8', (err, data) => {
+                        if (err) {
                             console.error(err);
+                            return;
                         }
-                    } else {
-                        //if file exist
-                        let scores = JSON.parse(data);
-                        scores.push(scoreValue);
-                        fs.writeFileSync(filePath, JSON.stringify(scores));
-                    }
-                });
+                        //parse the data
+                        const scoreData = JSON.parse(data);
+                        //update the score
+                        scoreData.score += scoreValue;
+                        //write the updated score to the file
+                        fs.writeFile(scoreFile, JSON.stringify(scoreData, null, 4), (err) => {
+                            if (err) {
+                                console.error(err);
+                                return;
+                            }
+                        });
+                    });
+                } else {
+                    //if the file does not exist, create a new file
+                    fs.writeFile(scoreFile, JSON.stringify({ score: scoreValue }, null, 4), (err) => {
+                        if (err) {
+                            console.error(err);
+                            return;
+                        }
+                    });
+                }
+               
             }
 
             //update the file
