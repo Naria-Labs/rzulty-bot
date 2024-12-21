@@ -12,6 +12,7 @@ module.exports = {
         ),
 
     async execute(interaction) {
+        const author = interaction.member;
         const boardSize = interaction.options.getInteger('number');
         let Board = Array.from({ length: boardSize }, () => Array(boardSize).fill('<:space:1315336436987203716>'));
 
@@ -123,6 +124,27 @@ module.exports = {
             up.setDisabled(true);
             down.setDisabled(true);
             right.setDisabled(true);
+
+            //create array of scores and save it to a file with the user id
+            let scores = [];
+            scores.push(scoreValue);
+            //search for the same id and if it exists add replace the score to the array
+            //if it doesn't exist create a new array and
+            //add the score to it and
+            fs.readFile(`./scores/${interaction.user.id}.json`, (err, data) => {
+                if (err) {
+                    fs.writeFileSync(`./scores/${interaction.user.id}.json`, JSON.stringify(scores));
+                } else {
+                    let scores = JSON.parse(data);
+                    scores.push(scoreValue);
+                    fs.writeFileSync(`./scores/${interaction.user.id}.json`, JSON.stringify(scores));
+                }
+            }, (err) => {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+            });
 
             interaction.editReply({
                 content: 'Game over!',
