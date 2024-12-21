@@ -1,0 +1,3 @@
+[submodule "modules/base-module"]
+	path = modules/base-module
+	url = https://github.com/Naria-Labs/base-module
