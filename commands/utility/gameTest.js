@@ -65,13 +65,13 @@ module.exports = {
             .addComponents(left, up, down, right, score);
 
 
-        const time = new ActionRowBuilder()
+        const timeRow = new ActionRowBuilder()
             .addComponents(time);
                
         await interaction.reply({
             content: getBoardString(),
             components: [row],
-            components: [time],
+            components: [timeRow],
         });
 
         const collector = interaction.channel.createMessageComponentCollector({ time: 60000 });
@@ -135,7 +135,7 @@ module.exports = {
             await buttonInteraction.update({
                 content: getBoardString(),
                 components: [row],
-                components: [time],
+                components: [timeRow],
             });
         });
 
