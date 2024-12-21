@@ -55,33 +55,16 @@ module.exports = {
             .setLabel('Score: 0')
             .setDisabled(true);
 
-        const time = new ButtonBuilder()
-            .setCustomId('time')
-            .setStyle(ButtonStyle.Secondary)
-            .setLabel('Time: 0')
-            .setDisabled(true);
-
         const row = new ActionRowBuilder()
             .addComponents(left, up, down, right, score);
 
-
-        const timeRow = new ActionRowBuilder()
-            .addComponents(time);
                
         await interaction.reply({
             content: getBoardString(),
             components: [row],
-            components: [timeRow],
         });
 
         const collector = interaction.channel.createMessageComponentCollector({ time: 60000 });
-
-        timeRemaining(60);
-
-        const stopWatch = timeRemaining => {
-            stopWatch.setLabel(`Time: ${timeRemaining}`);
-            if (timeRemaining === 0) collector.stop();
-        }
 
         setInterval(() => timeRemaining(timeRemaining - 1), 1000);
 
@@ -135,7 +118,6 @@ module.exports = {
             await buttonInteraction.update({
                 content: getBoardString(),
                 components: [row],
-                components: [timeRow],
             });
         });
 
