@@ -76,12 +76,12 @@ module.exports = {
 
         const collector = interaction.channel.createMessageComponentCollector({ time: 60000 });
 
-        const time = timeRemaining => {
-            time.setLabel(`Time: ${timeRemaining}`);
+        timeRemaining(60);
+
+        const stopWatch = timeRemaining => {
+            stopWatch.setLabel(`Time: ${timeRemaining}`);
             if (timeRemaining === 0) collector.stop();
         }
-
-        timeRemaining(60);
 
         setInterval(() => timeRemaining(timeRemaining - 1), 1000);
 
