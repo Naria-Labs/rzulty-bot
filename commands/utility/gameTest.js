@@ -58,15 +58,12 @@ module.exports = {
         const row = new ActionRowBuilder()
             .addComponents(left, up, down, right, score);
 
-               
         await interaction.reply({
             content: getBoardString(),
             components: [row],
         });
 
         const collector = interaction.channel.createMessageComponentCollector({ time: 60000 });
-
-        setInterval(() => timeRemaining(timeRemaining - 1), 1000);
 
         const checkPosition = () => {
             if (playerX === pointX && playerY === pointY) {
@@ -106,7 +103,7 @@ module.exports = {
                     break;
             }
 
-            
+
             //scoreValue++; //change it later for a a smth that is not incrementing the score every time you move
             checkPosition();
             updateScoreButton();
