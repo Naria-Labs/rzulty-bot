@@ -64,7 +64,7 @@ module.exports = {
             components: [row],
         });
 
-        const collector = interaction.channel.createMessageComponentCollector({ time: 60000 });
+        const collector = interaction.channel.createMessageComponentCollector({ time: 10000 });
 
         const checkPosition = () => {
             if (playerX === pointX && playerY === pointY) {
@@ -130,26 +130,32 @@ module.exports = {
                 components: [row],
             });
 
-            //create array of scores and save it to a file with the user id
-            let scores = [];
-            scores.push(scoreValue);
-            //search for the same id and if it exists add replace the score to the array
-            //if it doesn't exist create a new array and
-            //add the score to it and
-            fs.readFile(`./scores/${interaction.user.id}.json`, (err, data) => {
-                if (err) {
-                    fs.writeFileSync(`./scores/${interaction.user.id}.json`, JSON.stringify(scores));
-                } else {
-                    let scores = JSON.parse(data);
-                    scores.push(scoreValue);
-                    fs.writeFileSync(`./scores/${interaction.user.id}.json`, JSON.stringify(scores));
-                }
-            }, (err) => {
-                if (err) {
-                    console.error(err);
-                    return;
-                }
-            });
+            
+            const fs = require('fs');
+
+            function addOrUpdateScore(userId, scoreValue) {
+                const filePath = `./scores/${userId}.json`;
+
+                fs.readFile(filePath, (err, data) => {
+                    if (err) {
+                        //if file doesn't exist
+                        if (err.code === 'ENOENT') {
+                            fs.writeFileSync(filePath, JSON.stringify([scoreValue]));
+                        } else {
+                            console.error(err);
+                        }
+                    } else {
+                        //if file exist
+                        let scores = JSON.parse(data);
+                        scores.push(scoreValue);
+                        fs.writeFileSync(filePath, JSON.stringify(scores));
+                    }
+                });
+            }
+
+            //update the file
+            addOrUpdateScore(interaction.user.id, scoreValue);
+
         });
     },
 };
