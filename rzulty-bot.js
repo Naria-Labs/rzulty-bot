@@ -34,8 +34,8 @@ for (const folder of moduleFolders) {
 
 client.once(Events.ClientReady, readyClient => {
 	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
-	client.user.setActivity("/help for well help", {
-    				type: ActivityType.Watching,
+	client.user.setActivity("/help", {
+    				type: ActivityType.Listening,
   				});
 });
 
