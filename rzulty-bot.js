@@ -1,6 +1,7 @@
 // basic code using a lot from https://discordjs.guide
 
 const { Client, Collection, Events, GatewayIntentBits, REST, Routes } = require('discord.js');
+const { ActivityType } = require("discord.js");
 const sqlite3 = require('sqlite3').verbose();
 const fs = require('node:fs');
 const path = require('node:path');
@@ -33,7 +34,11 @@ for (const folder of moduleFolders) {
 
 client.once(Events.ClientReady, readyClient => {
 	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+	client.user.setActivity("/help for well help", {
+    				type: ActivityType.Watching,
+  				});
 });
+
 
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
