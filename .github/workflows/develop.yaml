@@ -51,4 +51,3 @@ jobs:
           script: |
             cd naria-labs/rzulty-bot-dev/
             pm2 restart develop --update-env
-            

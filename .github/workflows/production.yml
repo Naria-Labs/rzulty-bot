@@ -51,4 +51,3 @@ jobs:
           script: |
             cd naria-labs/rzulty-bot/
             pm2 restart production --update-env
-            
