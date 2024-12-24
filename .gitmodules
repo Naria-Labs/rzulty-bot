@@ -1,7 +1,9 @@
 [submodule "modules/base-module"]
 	path = modules/base-module
 	url = https://github.com/Naria-Labs/base-module
+[submodule "modules/priest-module"]
+	path = modules/priest-module
+	url = https://github.com/Naria-Labs/priest-module
 [submodule "modules/smith-module"]
 	path = modules/smith-module
 	url = git@github.com:PawKow2K/smith-module.git
-	branch = develop
