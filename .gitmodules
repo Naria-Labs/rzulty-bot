@@ -3,5 +3,5 @@
 	url = https://github.com/Naria-Labs/base-module
 [submodule "modules/smith-module"]
 	path = modules/smith-module
-	url = git@github.com:PawKow2K/smith-module.git
+	url = git@github.com:Naria-Labs/smith-module.git
 	branch = develop
