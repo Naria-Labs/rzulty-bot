@@ -1,9 +1,9 @@
 [submodule "modules/base-module"]
 	path = modules/base-module
-	url = https://github.com/Naria-Labs/base-module
+	url = git@github.com:Naria-Labs/base-module.git
 [submodule "modules/priest-module"]
 	path = modules/priest-module
-	url = https://github.com/Naria-Labs/priest-module
+	url = git@github.com:Naria-Labs/priest-module.git
 [submodule "modules/smith-module"]
 	path = modules/smith-module
-	url = git@github.com:PawKow2K/smith-module.git
+	url = git@github.com:Naria-Labs/smith-module.git
