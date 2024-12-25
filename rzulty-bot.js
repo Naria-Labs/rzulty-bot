@@ -9,10 +9,14 @@ const {
   Routes,
 } = require("discord.js");
 const { ActivityType } = require("discord.js");
-const sqlite3 = require("sqlite3").verbose();
 const fs = require("node:fs");
 const path = require("node:path");
 require("dotenv").config();
+const { db, registerModuleModels } = require("database.js");
+
+if (!db.initDatabase()) {
+  process.exit(1);
+}
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -24,6 +28,7 @@ const moduleFolders = fs.readdirSync(modulesPath);
 for (const folder of moduleFolders) {
   const modulePath = path.join(modulesPath, folder, "module.js");
   const importedModule = require(modulePath);
+  registerModuleModels(importedModule);
   if ("commands" in importedModule) {
     for (const command of importedModule.commands) {
       // Set a new item in the Collection with the key as the command name and the value as the exported module
@@ -74,6 +79,10 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
 
   console.log(interaction);
+});
+
+process.on("SIGINT", function () {
+  db.closeDatabase();
 });
 
 client.login(process.env.DISCORD_TOKEN);
