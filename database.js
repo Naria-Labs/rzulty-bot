@@ -23,11 +23,7 @@ module.exports = {
   registerModuleModels: (importedModule) => {
     if ("models" in importedModule) {
       for (const model of importedModule.models) {
-        models[model.name] = sequelize.define(
-          model.name,
-          model.attributes,
-          model.options
-        );
+        sequelize.define(model.name, model.attributes, model.options);
       }
     }
   },
