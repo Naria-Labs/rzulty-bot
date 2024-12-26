@@ -12,9 +12,14 @@ const { ActivityType } = require("discord.js");
 const fs = require("node:fs");
 const path = require("node:path");
 require("dotenv").config();
-const { db, registerModuleModels } = require("database.js");
+const {
+  db,
+  initDatabase,
+  registerModuleModels,
+  closeDatabase,
+} = require("./database.js");
 
-if (!db.initDatabase()) {
+if (!initDatabase()) {
   process.exit(1);
 }
 
@@ -82,7 +87,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 });
 
 process.on("SIGINT", function () {
-  db.closeDatabase();
+  closeDatabase();
 });
 
 client.login(process.env.DISCORD_TOKEN);
