@@ -1,5 +1,4 @@
 // basic code using a lot from https://discordjs.guide
-// bery basic much code 
 
 const { REST, Routes } = require('discord.js');
 require('dotenv').config();
