@@ -33,7 +33,6 @@ const moduleFolders = fs.readdirSync(modulesPath);
 for (const folder of moduleFolders) {
   const modulePath = path.join(modulesPath, folder, "module.js");
   const importedModule = require(modulePath);
-  registerModuleModels(importedModule);
   if ("commands" in importedModule) {
     for (const command of importedModule.commands) {
       // Set a new item in the Collection with the key as the command name and the value as the exported module
@@ -47,6 +46,8 @@ for (const folder of moduleFolders) {
       }
     }
   }
+  registerModuleModels(importedModule);
+  db.sync();
 }
 
 client.once(Events.ClientReady, (readyClient) => {

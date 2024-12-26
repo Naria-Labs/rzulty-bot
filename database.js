@@ -29,6 +29,13 @@ module.exports = {
         sequelize.define(model.name, model.attributes, model.options);
       }
     }
+    if ("commands" in importedModule) {
+      for (const command of importedModule.commands) {
+        if ("initFromDB" in command) {
+          command.initFromDB();
+        }
+      }
+    }
   },
 
   closeDatabase: () => {},
