@@ -15,7 +15,7 @@ require("dotenv").config();
 const {
   db,
   initDatabase,
-  registerModuleModels,
+  moduleInitDatabase,
   closeDatabase,
 } = require("./database.js");
 
@@ -46,7 +46,7 @@ for (const folder of moduleFolders) {
       }
     }
   }
-  registerModuleModels(importedModule);
+  moduleInitDatabase(importedModule);
   db.sync();
 }
 
