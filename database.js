@@ -6,12 +6,6 @@ const sequelize = new Sequelize({
 });
 
 module.exports = {
-  ModelDef: class {
-    constructor(name, fields, options) {
-      (this.name = name), (this.attributes = fields), (this.options = options);
-    }
-  },
-
   initDatabase: (name = "data.sqlite3") => {
     try {
       sequelize.authenticate();
@@ -23,22 +17,13 @@ module.exports = {
     }
   },
 
-  registerModuleModels: (importedModule) => {
-    if ("models" in importedModule) {
-      for (const model of importedModule.models) {
-        sequelize.define(model.name, model.attributes, model.options);
-      }
-    }
-    if ("commands" in importedModule) {
-      for (const command of importedModule.commands) {
-        if ("initFromDB" in command) {
-          command.initFromDB();
-        }
-      }
-    }
-  },
-
   closeDatabase: () => {},
 
   db: sequelize,
+};
+
+module.exports.moduleInitDatabase = (importedModule) => {
+  if ("initDB" in importedModule) {
+    importedModule.initDB(module.exports.db);
+  }
 };
