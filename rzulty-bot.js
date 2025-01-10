@@ -47,7 +47,12 @@ for (const folder of moduleFolders) {
     }
   }
   moduleInitDatabase(importedModule);
-  db.sync();
+}
+
+if (process.env.RZULTY_DEVELOP) {
+  db.sync({ alter: true });
+} else {
+  // no legit production environment yet - will do it then
 }
 
 client.once(Events.ClientReady, (readyClient) => {

@@ -1,12 +1,14 @@
 const { Sequelize } = require("sequelize");
 
+var toClose = [];
+
 const sequelize = new Sequelize({
   dialect: "sqlite",
-  storage: ":memory:",
+  storage: "data.sqlite3",
 });
 
 module.exports = {
-  initDatabase: (name = "data.sqlite3") => {
+  initDatabase: () => {
     try {
       sequelize.authenticate();
       console.log("Database connection successful");
@@ -17,7 +19,11 @@ module.exports = {
     }
   },
 
-  closeDatabase: () => {},
+  closeDatabase: () => {
+    for (initializedModule of toClose) {
+      initializedModule.closeDB();
+    }
+  },
 
   db: sequelize,
 };
@@ -25,5 +31,6 @@ module.exports = {
 module.exports.moduleInitDatabase = (importedModule) => {
   if ("initDB" in importedModule) {
     importedModule.initDB(module.exports.db);
+    toClose.push(importedModule);
   }
 };

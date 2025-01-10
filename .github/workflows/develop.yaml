@@ -51,4 +51,4 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd naria-labs/rzulty-bot-dev/
-            pm2 restart develop --update-env
+            RZULTY_DEVELOP=1 pm2 restart develop --update-env
