@@ -60,6 +60,14 @@ client.once(Events.ClientReady, (readyClient) => {
   client.user.setActivity("/help", {
     type: ActivityType.Listening,
   });
+
+  for (const folder of moduleFolders) {
+    const modulePath = path.join(modulesPath, folder, "module.js");
+    const importedModule = require(modulePath);
+    if ("afterLogin" in importedModule) {
+      importedModule.afterLogin(readyClient);
+    }
+  }
 });
 
 client.on(Events.InteractionCreate, async (interaction) => {
