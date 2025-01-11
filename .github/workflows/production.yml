@@ -25,6 +25,7 @@ jobs:
             cd naria-labs/rzulty-bot/
             git checkout master
             git pull origin master
+            npm install
             npm ci
             npm test
       - name: Update commands
@@ -51,4 +52,3 @@ jobs:
           script: |
             cd naria-labs/rzulty-bot/
             pm2 restart production --update-env
-            
