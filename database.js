@@ -19,10 +19,8 @@ module.exports = {
     }
   },
 
-  closeDatabase: () => {
-    for (initializedModule of toClose) {
-      initializedModule.closeDB();
-    }
+  closeDatabase: async () => {
+    await Promise.all(toClose.every((m) => m.closeDB()));
   },
 
   db: sequelize,
@@ -31,6 +29,8 @@ module.exports = {
 module.exports.moduleInitDatabase = (importedModule) => {
   if ("initDB" in importedModule) {
     importedModule.initDB(module.exports.db);
-    toClose.push(importedModule);
+    if ("closeDB" in importedModule) {
+      toClose.push(importedModule);
+    }
   }
 };

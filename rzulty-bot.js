@@ -94,8 +94,8 @@ client.on(Events.InteractionCreate, async (interaction) => {
   console.log(interaction);
 });
 
-process.on("SIGINT", function () {
-  closeDatabase();
+process.on("SIGINT", async function () {
+  await closeDatabase();
 });
 
 client.login(process.env.DISCORD_TOKEN);
