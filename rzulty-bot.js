@@ -49,12 +49,6 @@ for (const folder of moduleFolders) {
   moduleInitDatabase(importedModule);
 }
 
-if (process.env.RZULTY_DEVELOP) {
-  db.sync({ alter: true });
-} else {
-  // no legit production environment yet - will do it then
-}
-
 client.once(Events.ClientReady, (readyClient) => {
   console.log(`Ready! Logged in as ${readyClient.user.tag}`);
   client.user.setActivity("/help", {
